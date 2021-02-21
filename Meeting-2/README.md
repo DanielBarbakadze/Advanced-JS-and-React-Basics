@@ -7,7 +7,6 @@
 * Constructor Functions
 * Object prototype
 
-
 ## What is '**This**'
 
 `this` მიგვითითებს **კონტექსტზე** სადაც მიმდინარედ ვიმყოფებით.
@@ -31,7 +30,7 @@ It has different values depending on where it is used:
 
 In the global execution context (outside of any function), `this` refers to the global object whether in strict mode or not.
 
-```
+```js
 // In web browsers, the window object is also the global object:
 console.log(this === window); // true
 
@@ -53,7 +52,7 @@ Inside a function, the value of `this` **depends on how the function is called**
 
 Since the following code is not in [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), and because the value of `this` is not set by the call, `this` will default to the global object, which is [`window`](https://developer.mozilla.org/en-US/docs/Web/API/Window "window") in a browser.
 
-```
+```js
 function f1() {
   return this;
 }
@@ -67,7 +66,7 @@ f1() === globalThis; // true
 
 In strict mode, however, if the value of `this` is not set when entering an execution context, it remains as `undefined`, as shown in the following example:
 
-```
+```js
 function f2() {
   'use strict'; // see strict mode
   return this;
@@ -88,7 +87,7 @@ In the example on the top of this page, `this` refers to the **person** object.
 
 The **person** object is the **owner** of the **fullName** method.
 
-```
+```js
 var person = {
   firstName: "John",
   lastName : "Doe",
@@ -105,7 +104,7 @@ var person = {
 
 In HTML event handlers, `this` refers to the HTML element that received the event.
 
-```
+```js
 function changeColor() {
     this.style.color = 'red';
 }
@@ -115,7 +114,7 @@ document.getElementById('test').addEventListener('click', changeColor);
 
 another example:
 
-```
+```html
 <button onclick="this.style.display='none'">
   Click to Remove Me!
 </button>
@@ -127,7 +126,7 @@ another example:
 
 In this example, `this` in the **person.sayHello** is not the same as in **person.inner.sayHello**
 
-```
+```js
 let person = {
   sayHello : function() {
     return this;
@@ -154,7 +153,7 @@ person.inner.sayHello() // Context is 'inner' object
 
 გამოვიყენოთ ეს კოდი ქვედა მაგალითებისთვის
 
-```
+```js
 const module = {
   x: 42,
   getX: function(a,b,c) {
@@ -172,7 +171,7 @@ console.log(unboundGetX(2,3,4)); // The function gets invoked at the global scop
 
 The `bind()` method creates a new function that, **when called**, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
 
-```
+```js
 const boundGetX = unboundGetX.bind(module,2);
 console.log(boundGetX(3,4));
 // expected output: {x: '42, sum: 9}
@@ -182,7 +181,7 @@ console.log(boundGetX(3,4));
 
 The `call()` method calls a function with a given `this` value and arguments provided individually.
 
-```
+```js
 const boundGetX = unboundGetX.call(module,2,3,4);
 console.log(boundGetX);
 // expected output: {x: '42, sum: 9}
@@ -192,7 +191,7 @@ console.log(boundGetX);
 
 The `apply()` method calls a function with a given `this` value, and `arguments` provided as an array (or an [array-like object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#working_with_array-like_objects)).
 
-```
+```js
 const boundGetX = unboundGetX.apply(module,[2,3,4]);
 console.log(boundGetX);
 // expected output: {x: '42, sum: 9}
@@ -208,15 +207,13 @@ A constructor function is a normal function.
 
 > Another way of saying it, is that **a function *becomes* a 'constructor' when it is being called with the `new` Operator**
 
-
-
 ### new operator
 
 ---
 
 The **`new` operator** lets developers create **an instance** of a user-defined object type or of one of the built-in object types that has a constructor function.
 
-```
+```js
 function Car(make, model, year) {
   this.make = make;
   this.model = model;
@@ -237,13 +234,11 @@ The **`new`** keyword does the following things:
 3. Binds the newly created object instance as the `this` context (i.e. all references to `this` in the constructor function now refer to the object created in the first step).
 4. Returns `this` if the function doesn't return an object.
 
-
 When the code `new Foo(...)` is executed, the following things happen:
 
 1. A new object is created, inheriting from `Foo.prototype`.
 2. The constructor function `Foo` is called with the specified arguments, and with `this` bound to the newly created object. `new Foo` is equivalent to `new Foo()`, i.e. if no argument list is specified, `Foo` is called without arguments.
 3. The object (not null, false, 3.1415 or other primitive types) returned by the constructor function becomes the result of the whole `new` expression. If the constructor function doesn't explicitly return an object, *this* is used instead.
-
 
 ### Object property that is itself another object
 
@@ -251,7 +246,7 @@ When the code `new Foo(...)` is executed, the following things happen:
 
 წარმოვიდგინოთ, შევქმენით კონსტრუქტორ ფუნქცია სახელად `Person`
 
-```
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -260,14 +255,14 @@ function Person(name, age) {
 
 და შემდეგ ორი new `Person` ობიექტი, შედმეგნაირად:
 
-```
+```js
 var rand = new Person('Rand McNally', 33);
 var ken = new Person('Ken Jones', 39);
 ```
 
-ასევე დავარედაქტირეთ ზემოთ აღწერილი კონსტრუქტორ ფუნქცია `Car`, რომელიც ახლა უკვე იღებს `Person` ობიექტს როგორც პარამეტრს, შემდეგნაირად:
+ასევე დავარედაქტირეთ ზემოთ აღწერილი კონსტრუქტორ ფუნქცია `Car`, რომ ახლა უკვე გადავაწოდოთ `Person` ობიექტი როგორც `owner` პარამეტრი, შემდეგნაირად:
 
-```
+```js
 function Car(make, model, year, owner) {
   this.make = make;
   this.model = model;
@@ -278,7 +273,7 @@ function Car(make, model, year, owner) {
 
 მაგალითისთვის შევქმნათ ორი ახალი ობიექტის `instance`:
 
-```
+```js
 var car1 = new Car('Tesla', 'Model S', 2015, rand);
 var car2 = new Car('Nissan', '300ZX', 1992, ken);
 ```
@@ -287,10 +282,9 @@ var car2 = new Car('Nissan', '300ZX', 1992, ken);
 
 ეს სტრუქტურა საშუალებას გვაძლევს `car` -ის მფლობელის `name` -ს მივწვდეთ შემდეგნაირად:
 
-```
+```js
 car2.owner.name // Ken Jones
 ```
-
 
 ## Object prototypes
 
@@ -304,7 +298,7 @@ JavaScript is often described as a **prototype-based language** — to provide i
 
 აღვწეროთ კონსტრუქტორ ფუნქცია `Person`:
 
-```
+```js
 function Person(first, last, age, gender, interests) {
 
   // property and method definitions
@@ -318,9 +312,9 @@ function Person(first, last, age, gender, interests) {
 }
 ```
 
-ასევე აღვწეროთ ობიექტინს `instance`:
+ასევე აღვწეროთ ობიექტის `instance`:
 
-```
+```js
 let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
 ```
 
@@ -333,7 +327,6 @@ let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
 ![prototype-chain](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes/mdn-graphics-person-person-object-2.png)
 
 მას ეს ფროფერთები გადმოეცა შთამომავლობით Object სგან, ამ პროცესს კი ეწოდება — `prototype chain`.
-
 
 ## References
 

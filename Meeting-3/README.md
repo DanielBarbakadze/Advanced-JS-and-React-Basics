@@ -1,4 +1,4 @@
-> # Meeting 2
+> # Meeting 3
 
 განსახილველი თემები:
 
@@ -9,7 +9,7 @@
 * Polymorphism
 * Classes in JS
 * Code Examples of Abstraction, Inheritance and Polymorphism
-
+* instanceof and typeof
 
 ## What is OOP
 
@@ -28,19 +28,30 @@ Object-oriented programming has several advantages over procedural programming:
 >
 > The "Don't Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it.
 
-
 ## Encapsulation
 
-Objects can contain related data and code, which represent information about the thing you are trying to model, and functionality or behavior that you want it to have. Object data (and often, functions too) can be stored neatly (the official word is **encapsulated**) inside an object package (which can be given a specific name to refer to, which is sometimes called a **namespace**), making it easy to structure and access; objects are also commonly used as data stores that can be easily sent across the network.
+When talking about encapsulation, private class members are often mentioned, and that is correct, but it covers just a part of this principle.
+
+More advanced and high-level explanations are associated with meaning Encapsulation as a concept of bundling data related variables and properties with behavioral methods in one class or code unit.
+But if we are still talking about privacy, we can give another definition.
+
+Encapsulation is an approach for restricting direct access to some of the data structure elements (fields, properties, methods, etc).
+
 
 If you want to change encapsulated state, **you don’t reach out and directly mutate** some object’s props. **Instead, you call a method on the object**, and *maybe* the object will respond by updating its state.
 
 
+Let’s look at an example.
 
-The trouble with shared mutable state is that if your input state depends on some other instruction’s output state, and any sort of concurrency arrises, it creates race conditions. If you change the order in which instructions are called, it can alter the results. Mix in any sort of non-determinism in sequencing, and the result is chaos: unpredictable, unprovable, seemingly random application state. Sometimes it works. Sometimes it doesn’t.
+![encapsulation-example](https://miro.medium.com/max/700/1*fBuojCESyN8ib8hJIrKWQw.jpeg)
 
-Encapsulation is one approach to deal with this problem.
+We have a real-life component - car. Usage of the abstraction principle defines the context of data that will be needed in our application. In this case, we will need a car properties model name, current speed, max speed, and boolean engine prop that will be responsible for a state if a car is turned on or off.
 
+Encapsulation principle means that we should add to the same class behavioral methods (drive, stop, etc.). Those may be used in our application and also to provide restricted access to changes in class instance’s state. We don’t want a client of our class to be able to turn off the car and then still be able to set its speed value to 100 miles per hour.
+
+In more complex applications you may need more properties that describe the other car subsystems like lights or wheel.
+
+In that case, you will have to make few abstractions for those subsystems that will encapsulate its state and behavior, and then you’ll be able to compose car Class with all that functionality.
 
 
 ## Abstraction
@@ -63,13 +74,11 @@ From our class, we can create **object instances** — objects that contain the 
 
 When an object instance is created from a class, the class's **constructor function** is run to create it. This process of creating an object instance from a class is called **instantiation** — the object instance is **instantiated** from the class.
 
-
 ## Inheritence
 
-In this case we don't want generic people — we want teachers and students, which are both more specific types of people. In OOP, we can create new classes based on other classes — these new **child classes **(also known as **subclasses**) can be made to **inherit** the data and code features of their **parent class**, so you can reuse functionality common to all the object types rather than having to duplicate it.  Where functionality differs between classes, you can define specialized features directly on them as needed.
+In this case we don't want generic people — we want teachers and students, which are both more specific types of people. In OOP, we can create new classes based on other classes — these new **child classes** (also known as **subclasses**) can be made to **inherit** the data and code features of their **parent class**, so you can reuse functionality common to all the object types rather than having to duplicate it.  Where functionality differs between classes, you can define specialized features directly on them as needed.
 
 ![inheritance-oop](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS/mdn-graphics-inherited-3.png)
-
 
 ## Polymorphism
 
@@ -79,18 +88,15 @@ Continue talking about previous picture  — teachers and students share many co
 >
 > The fancy word for the ability of multiple object types to implement the same functionality is **polymorphism**. Just in case you were wondering.
 
-
 **Polymorphism** in Object-Oriented Programming is an ability to create a property, a function, or an object that has more than one realization.
 
 Polymorphism is an ability to substitute classes that have common functionality in sense of methods and data. In other words, **it is an ability of multiple object types to implement the same functionality** that can work in a different way but supports a common interface.
 
 For example, function that expects a super class instance as an argument can work correctly with subclass instance as well, without the function needs to know about any of the subclasses types.
 
-
 ## Classes in JS
 
 **Classes are a template** for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are not shared with ES5 class-like semantics.
-
 
 ### Defining Classes
 
@@ -116,7 +122,6 @@ Classes are in fact "special [functions](https://developer.mozilla.org/en-US/doc
 > }
 > ```
 
-
 ### Class declarations
 
 One way to define a class is using a **class declaration**. To declare a class, you use the `class` keyword with the name of the class ("Rectangle" here).
@@ -138,7 +143,6 @@ An important difference between **function declarations** and **class declaratio
 const p = new Rectangle(); // ReferenceError
 class Rectangle {}
 ```
-
 
 ### Class expressions
 
@@ -170,18 +174,15 @@ console.log(Rectangle.name);
 // output: "Rectangle2"
 ```
 
-
 ### Class body and method definitions
 
 ---
 
 The body of a class is the part that is in curly brackets `{}`. This is where you define class members, such as methods or constructor.
 
-
 #### Strict mode
 
 The body of a class is executed in [**strict mode**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). Code written here is subject to stricter syntax for increased performance.
-
 
 #### Constructor
 
@@ -300,7 +301,6 @@ eat(); // global object (in non-strict mode)
 >
 > As a general rule functions should be on the prototype since they will generally not be modified for different objects of the same type, and this has a slight memory/performance benefit. Other properties like objects and arrays should be defined in the constructor, unless you want to create a shared, static property, in which case you should use the prototype.
 
-
 #### Instance properties
 
 Instance properties must be defined inside of class methods:
@@ -314,7 +314,6 @@ class Rectangle {
 }
 ```
 
-
 Static (class-side) data properties and prototype data properties must be defined outside of the ClassBody declaration:
 
 ```js
@@ -322,12 +321,9 @@ Rectangle.staticWidth = 20;
 Rectangle.prototype.prototypeWidth = 25;
 ```
 
-
 #### Field declarations
 
 ---
-
-
 
 ##### Public field declarations
 
@@ -375,7 +371,6 @@ Private fields cannot be created later through assigning to them, the way that n
 
 For more information, see [private class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields).
 
-
 ### Sub classing with extends
 
 The [`extends`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends) keyword is used in *class declarations* or *class expressions* to create a class as a child of another class.
@@ -406,7 +401,6 @@ d.speak(); // Mitzie barks.
 ```
 
 If there is a constructor present in the subclass, it needs to first call super() before using "this".
-
 
 > **Quick revise:
 >
@@ -482,7 +476,6 @@ l.speak();
 // Fuzzy makes a noise.
 // Fuzzy roars.
 ```
-
 
 ## Code Examples of Abstraction, Inheritance and Polymorphism
 
@@ -652,6 +645,58 @@ class Rectangle extends Shape {
 ```
 
 
+## instanceof and typeof
+
+The **`instanceof` operator** tests to see if the `prototype` property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+const daniel916 = new Person('Daniel');
+
+console.log(daniel916 instanceof Person); // expected output: true
+console.log(daniel916 instanceof Object); // expected output: true
+```
+
+Same works for classes
+
+```js
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    getName() {
+        return this.name;
+    }
+}
+
+let daniel916 = new Person("Daniel");
+
+console.log(daniel916.getName()); // expected output: "Daniel"
+console.log(daniel916 instanceof Person); // expected output: true
+console.log(daniel916 instanceof Object); // expected output: true
+```
+
+
+
+The **`typeof`** operator returns a string indicating the type of the unevaluated operand.
+
+```js
+console.log(typeof 42); // expected output: "number"
+console.log(typeof true); // expected output: "boolean"
+console.log(typeof 'blubber'); // expected output: "string"
+console.log(typeof undeclaredVariable); // expected output: "undefined"
+```
+
+To verify the fact that classes are special functions, you can use the `typeof` operator of to check the type of the `Person` class.
+
+```js
+console.log(typeof Person); // function
+```
+
+
 ## References
 
 [oop - the basics :MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS)
@@ -665,3 +710,7 @@ class Rectangle extends Shape {
 [Abstraction in JS :medium](https://medium.com/@viktor.kukurba/object-oriented-programming-in-javascript-1-abstraction-c47307c469d1)
 
 [Classes :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+[instanceof :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)
+
+[tpyoef :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)

@@ -37,9 +37,7 @@ But if we are still talking about privacy, we can give another definition.
 
 Encapsulation is an approach for restricting direct access to some of the data structure elements (fields, properties, methods, etc).
 
-
 If you want to change encapsulated state, **you don’t reach out and directly mutate** some object’s props. **Instead, you call a method on the object**, and *maybe* the object will respond by updating its state.
-
 
 Let’s look at an example.
 
@@ -52,7 +50,6 @@ Encapsulation principle means that we should add to the same class behavioral me
 In more complex applications you may need more properties that describe the other car subsystems like lights or wheel.
 
 In that case, you will have to make few abstractions for those subsystems that will encapsulate its state and behavior, and then you’ll be able to compose car Class with all that functionality.
-
 
 ## Abstraction
 
@@ -644,7 +641,6 @@ class Rectangle extends Shape {
 }
 ```
 
-
 ## instanceof and typeof
 
 The **`instanceof` operator** tests to see if the `prototype` property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.
@@ -679,8 +675,6 @@ console.log(daniel916 instanceof Person); // expected output: true
 console.log(daniel916 instanceof Object); // expected output: true
 ```
 
-
-
 The **`typeof`** operator returns a string indicating the type of the unevaluated operand.
 
 ```js
@@ -695,7 +689,6 @@ To verify the fact that classes are special functions, you can use the `typeof` 
 ```js
 console.log(typeof Person); // function
 ```
-
 
 ## References
 
@@ -713,4 +706,4 @@ console.log(typeof Person); // function
 
 [instanceof :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof)
 
-[tpyoef :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+[typeof :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)

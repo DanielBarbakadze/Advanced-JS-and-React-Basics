@@ -742,6 +742,9 @@ This way of handling asynchronous code is difficult to follow. As a result, the 
 
 A promise represents the completion of an asynchronous function. It is an object that might return a value in the future. It accomplishes the same basic goal as a callback function, but with many additional features and a more readable syntax.
 
+![promises-image](https://bs-uploads.toptal.io/blackfish-uploads/uploaded_file/file/190741/image-1582215000590-ffa807c19d5f6959de485fc66664e123.png)
+
+
 #### Creating a Promise
 
 You can initialize a promise with the `new Promise` syntax, and you must initialize it with a function. The function that gets passed to a promise has `resolve` and `reject` parameters. The `resolve` and `reject` functions handle the success and failure of an operation, respectively.
@@ -1120,3 +1123,14 @@ Modern asynchronous JavaScript code is most often handled with `async`/`await` s
 [Callbacks, Promises and Async/Await :MEDIUM](https://medium.com/front-end-weekly/callbacks-promises-and-async-await-ad4756e01d90)
 
 [Understanding Callbacks, Promises and Async/Await :DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-the-event-loop-callbacks-promises-and-async-await-in-javascript#callback-functions)
+
+
+## Recomendations
+
+[Asynchronous JavaScript: From Callback Hell to Async and Await :Toptal](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)
+
+[Making asynchronous programming easier with async and await :MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)
+
+[Choosing the right approach :MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Choosing_the_right_approach)
+
+[async function :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)

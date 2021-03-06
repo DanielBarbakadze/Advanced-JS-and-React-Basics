@@ -773,7 +773,8 @@ const promise = new Promise((resolve, reject) => {
 Now, upon inspecting the promise, you’ll find that it has a status of `fulfilled`, and a `value` set to the value you passed to `resolve`:
 
 ```js
-Output__proto__: Promise
+Output
+__proto__: Promise
 [[PromiseStatus]]: "fulfilled"
 [[PromiseValue]]: "We did it!"
 ```
@@ -939,7 +940,8 @@ getUsers(true)
 This will yield the user data:
 
 ```
-Output(3) [{…}, {…}, {…}]
+Output
+(3) [{…}, {…}, {…}]
 0: {id: 1, name: "Jerry"}
 1: {id: 2, name: "Elaine"}
 3: {id: 3, name: "George"}
@@ -1026,7 +1028,8 @@ console.log(getUser())
 This will give the following:
 
 ```js
-Output__proto__: Promise
+Output
+__proto__: Promise
 [[PromiseStatus]]: "fulfilled"
 [[PromiseValue]]: Object
 ```
@@ -1068,7 +1071,8 @@ The `await` operators here ensure that the `data` is not logged before the reque
 Now the final `data` can be handled inside the `getUser` function, without any need for using `then`. This is the output of logging `data`:
 
 ```js
-Outputlogin: "octocat",
+Output
+login: "octocat",
 id: 583231,
 avatar_url: "https://avatars3.githubusercontent.com/u/583231?v=4"
 blog: "https://github.blog"

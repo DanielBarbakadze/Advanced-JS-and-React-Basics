@@ -18,7 +18,6 @@
 * Quick introduce with examples (Callbacks, Promises & Async/Await)
 * Callbacks | nested Callbacks | Promises | async/await
 
-
 ## General asynchronous programming concepts
 
 ### Asynchronous?
@@ -26,7 +25,6 @@
 Normally, a given program's code runs straight along, with only one thing happening at once. If a function relies on the result of another function, it has to wait for the other function to finish and return, and until that happens, the entire program is essentially stopped from the perspective of the user.
 
 There's no sense sitting there waiting for something when you could let the other task chug along on another processor core and let you know when it's done. This lets you get other work done in the meantime, which is the basis of **asynchronous programming**. It is up to the programming environment you are using (web browsers, in the case of web development) to provide you with APIs that allow you to run such tasks asynchronously.
-
 
 ### Blocking code
 
@@ -70,7 +68,6 @@ for(let i = 0; i < 10000000; i++) {
 console.log(`It took ${lastTime-firstTime}ms`)
 ```
 
-
 In second example, [simple-sync-ui-blocking.html](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/simple-sync-ui-blocking.html) ([see it live](https://mdn.github.io/learning-area/javascript/asynchronous/introducing/simple-sync-ui-blocking.html)), we simulate something slightly more realistic that you might come across on a real page. We block user interactivity with the rendering of the UI. In this example, we have two buttons:
 
 * A "Fill canvas" button that when clicked fills the available [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) with 1 million blue circles.
@@ -101,7 +98,6 @@ If you click the first button and then quickly click the second one, you'll see 
 
 Why is this? The answer is because JavaScript, generally speaking, is **single-threaded**. At this point, we need to introduce the concept of **threads**.
 
-
 ### Threads
 
 A **thread** is basically a single process that a program can use to complete tasks. Each thread can only do a single task at once:
@@ -111,7 +107,6 @@ Task A --> Task B --> Task C
 ```
 
 Each task will be run sequentially; a task has to complete before the next one can be started.
-
 
 As we said earlier, many computers now have multiple cores, so can do multiple things at once. Programming languages that can support multiple threads can use multiple cores to complete multiple tasks simultaneously:
 
@@ -141,7 +136,6 @@ Worker thread: Expensive task B
 
 With this in mind, have a look at [simple-sync-worker.html](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/simple-sync-worker.html) ([see it running live](https://mdn.github.io/learning-area/javascript/asynchronous/introducing/simple-sync-worker.html)), again with your browser's JavaScript console open. This is a rewrite of our previous example that calculates the 10 million dates in a separate worker thread. Now when you click the button, the browser is able to display the paragraph before the dates have finished calculating. The first operation no longer blocks the second.
 
-
 ### Asynchronous code
 
 Web workers are pretty useful, but **they do have their limitations**. A major one is they are not able to access the **DOM** — you can't get a worker to directly do anything to update the UI. We couldn't render our 1 million blue circles inside our worker; it can basically just do the number crunching.
@@ -170,11 +164,9 @@ Main thread: Task A                   Task B
 
 Since the operation is happening somewhere else, the main thread is not blocked while the async operation is being processed.
 
-
 ## Introducing asynchronous JavaScript
 
 Let's take a first look at some of the different asynchronous techniques, showing how they can help us solve such problems.
-
 
 ### Synchronous JavaScript
 
@@ -212,8 +204,7 @@ So in the example above, after you've clicked the button the paragraph won't app
 >
 > It is important to remember that `alert()`, while being very useful for demonstrating a synchronous blocking operation, is terrible for use in real world applications.
 
-
-### Asynchronous JavaScriptAsynchronous JavaScript
+### Asynchronous JavaScript
 
 For reasons illustrated earlier (e.g. related to blocking), many Web API features now use asynchronous code to run, especially those that access or fetch some kind of resource from an external device, such as fetching a file from the network, accessing a database and returning data from it, accessing a video stream from a web cam, or broadcasting the display to a VR headset.
 
@@ -227,9 +218,7 @@ let blob = response.blob();
 
 That's because you don't know how long the image will take to download, so when you come to run the second line it will throw an error (possibly intermittently, possibly every time) because the `response` is not yet available. Instead, you need your code to wait until the `response` is returned before it tries to do anything else to it.
 
-
 There are three main types of asynchronous code style you'll come across in JavaScript code, **old-style callbacks**, **promise-style code** and newer **async/await**.
-
 
 #### Async callbacks
 
@@ -250,7 +239,6 @@ btn.addEventListener('click', () => {
 The first parameter is the type of event to be listened for, and the second parameter is a callback function that is invoked when the event is fired.
 
 When we pass a callback function as an argument to another function, we are only passing the function's reference as an argument, i.e, the callback function is **not** executed immediately. It is “called back” (hence the name) asynchronously somewhere inside the containing function’s body. The containing function is responsible for executing the callback function when the time comes.
-
 
 #### Promises
 
@@ -277,14 +265,11 @@ We've then got three further code blocks chained onto the end of the `fetch()`:
 * Two `then()` blocks. Both contain a callback function that will run if the previous operation is successful, and each callback receives as input the result of the previous successful operation, so you can go forward and do something else to it. Each `.then()` block returns another promise, meaning that you can chain multiple `.then()` blocks onto each other, so multiple asynchronous operations can be made to run in order, one after another.
 * The `catch()` block at the end runs if any of the `.then()` blocks fail — in a similar way to synchronous `try...catch` blocks, an error object is made available inside the `catch()`, which can be used to report the kind of error that has occurred. Note however that synchronous `try...catch` won't work with promises, although it will work with [async/await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await), as you'll learn later on.
 
-
 #### The event queue
 
 Async operations like promises are put into an **event queue**, which runs after the main thread has finished processing so that they *do not block* subsequent JavaScript code from running. The queued operations will complete as soon as possible then return their results to the JavaScript environment.
 
-
 ## Quick introduce with examples (Callbacks, Promises & Async/Await)
-
 
 Let’s say you have a function that will print a string after a random amount of time:
 
@@ -298,7 +283,6 @@ function printString(string){
   )
 }
 ```
-
 
 Let’s try to print the letters A, B, C in that order:
 
@@ -317,7 +301,6 @@ You will notice that A, B, and C print in a different and random order each time
 This is because these functions are asynchronous. Each function gets executed in order, but each one is independent with it’s own setTimeout. They won’t wait for the last function to finish before they start.
 
 This is super annoying, so let’s fix it with a **callback**.
-
 
 ### Callbacks
 
@@ -354,7 +337,6 @@ printAll();
 Well, the code is a lot uglier now, but at least it works! Each time you call printAll, you get the same result.
 
 > The problem with callbacks is it creates something called “Callback Hell.” Basically, you start nesting functions within functions within functions, and it starts to get really hard to read the code.
-
 
 ### Promises
 
@@ -408,7 +390,6 @@ function printAll(){
 printAll();
 ```
 
-
 ### Async/Await
 
 Await is basically syntactic sugar for Promises. It makes your asynchronous code look more like synchronous/procedural code, which is easier for humans to understand.
@@ -431,13 +412,11 @@ Yeah…. MUCH better!
 
 You might notice that we use the “async” keyword for the wrapper function *printAll*. This let’s JavaScript know that we are using async/await syntax, and is necessary if you want to use Await. This means you can’t use Await at the global level; it always needs a wrapper function. Most JavaScript code runs inside a function, so this isn’t a big deal.
 
-
 ### BUT WAIT THERE'S MORE
 
 The `printString` function doesn’t return anything and is independent, all we cared about was the order. But what if you wanted to take the output of the first function, do something with it in the second function, and then pass it to the third function?
 
 Instead of printing the string each time, let’s make a function that will concatenate the string and pass it on.
-
 
 ### Callbacks
 
@@ -471,7 +450,6 @@ addAll();
 ```
 
 Not so nice.
-
 
 ### Promises
 
@@ -526,7 +504,6 @@ addAll();
 
 This is definitely more readable, especially if you add more to the chain, but still a mess of parenthesis.
 
-
 ### Async/Await
 
 The function stays the same as the Promise version.
@@ -545,7 +522,6 @@ addAll();
 ```
 
 Yeah. SO MUCH BETTER.
-
 
 ## Callbacks | nested Callbacks | Promises | async/await
 
@@ -574,7 +550,6 @@ higherOrderFunction(fn) // Output: "Just a function"
 ```
 
 In this code, you define a function `fn`, define a function `higherOrderFunction` that takes a function `callback` as an argument, and pass `fn` as a callback to `higherOrderFunction`.
-
 
 Let's take another example:
 
@@ -630,7 +605,7 @@ second(third)
 After running this code block, you will receive the following output:
 
 ```js
-Output:
+Output
 1
 2
 3
@@ -641,8 +616,6 @@ First `1` will print, and after the timer completes (in this case, zero seconds,
 The key takeaway here is that callback functions are not asynchronous—`setTimeout` is the asynchronous Web API responsible for handling asynchronous tasks. The callback just allows you to be informed of when an asynchronous task has completed and handles the success or failure of the task.
 
 Now that you have learned how to use callbacks to handle asynchronous tasks, the next section explains the problems of nesting too many callbacks and creating a “pyramid of doom.”
-
-
 
 ### Nested Callbacks and the Pyramid of Doom
 
@@ -667,7 +640,7 @@ function pyramidOfDoom() {
 In this code, each new `setTimeout` is nested inside a higher order function, creating a pyramid shape of deeper and deeper callbacks. Running this code would give the following:
 
 ```js
-Output:
+Output
 1
 2
 3
@@ -737,13 +710,11 @@ Error: Whoa! Something went wrong.
 
 This way of handling asynchronous code is difficult to follow. As a result, the concept of *promises* was introduced in ES6. This is the focus of the next section.
 
-
 ### Promises
 
 A promise represents the completion of an asynchronous function. It is an object that might return a value in the future. It accomplishes the same basic goal as a callback function, but with many additional features and a more readable syntax.
 
 ![promises-image](https://bs-uploads.toptal.io/blackfish-uploads/uploaded_file/file/190741/image-1582215000590-ffa807c19d5f6959de485fc66664e123.png)
-
 
 #### Creating a Promise
 
@@ -794,7 +765,6 @@ After being fulfilled or rejected, a promise is settled.
 
 Now that you have an idea of how promises are created, let’s look at how a developer may consume these promises.
 
-
 #### Consuming a Promise
 
 The promise in the last section has fulfilled with a value, but you also want to be able to access the value. Promises have a method called `then` that will run after a promise reaches `resolve` in the code. `then` will return the promise’s value as a parameter.
@@ -810,11 +780,11 @@ promise.then((response) => {
 The promise you created had a `[[PromiseValue]]` of `We did it!`. This value is what will be passed into the anonymous function as `response`:
 
 ```bash
-OutputWe did it!
+Output
+We did it!
 ```
 
 So far, the example you created did not involve an asynchronous Web API—it only explained how to create, resolve, and consume a native JavaScript promise. Using `setTimeout`, you can test out an asynchronous request.
-
 
 The following code simulates data returned from an asynchronous request as a promise:
 
@@ -838,8 +808,6 @@ Output
 Resolving an asynchronous request!
 ```
 
-
-
 Promises can also be chained to pass along data to more than one asynchronous operation. If a value is returned in `then`, another `then` can be added that will fulfill with the return value of the previous `then`:
 
 ```js
@@ -862,7 +830,6 @@ Resolving an asynchronous request! And chaining!
 ```
 
 Since `then` can be chained, it allows the consumption of promises to appear more synchronous than callbacks, as they do not need to be nested. This will allow for more readable code that can be maintained and verified easier.
-
 
 #### Error Handling
 
@@ -902,8 +869,6 @@ function getUsers(onSuccess) {
 ```
 
 For the successful result, you return JavaScript objects that represent sample user data.
-
-
 
 In order to handle the error, you will use the `catch` instance method. This will give you a failure callback with the `error` as a parameter.
 
@@ -950,8 +915,6 @@ Output
 3: {id: 3, name: "George"}
 ```
 
-
-
 For reference, here is a table with the handler methods on `Promise` objects:
 
 
@@ -959,14 +922,11 @@ For reference, here is a table with the handler methods on `Promise` objects:
 | - | - |
 | `then()` | Handles a`resolve`. Returns a promise, and calls `onFulfilled` function asynchronously |
 | `catch()` | Handles a`reject`. Returns a promise, and calls `onRejected` function asynchronously |
-| `finally()` | Called when a promise is settled. Returns a promise, and calls `onFinally` function asynchronously |
-
-
+| `finally()` | Called when a promise is settled. Returns a promise, and calls`onFinally` function asynchronously |
 
 Promises can be confusing, both for new developers and experienced programmers that have never worked in an asynchronous environment before. However as mentioned, it is much more common to consume promises than create them. Usually, a browser’s Web API or third party library will be providing the promise, and you only need to consume it.
 
 In the final promise section, this tutorial will cite a common use case of a Web API that returns promises: [the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
-
 
 #### Using the Fetch API with Promises
 
@@ -1004,8 +964,6 @@ followers: 3203
 This is the data requested from `https://api.github.com/users/octocat`, rendered in JSON format.
 
 This section of the tutorial showed that promises incorporate a lot of improvements for dealing with asynchronous code. But, while using `then` to handle asynchronous actions is easier to follow than the pyramid of callbacks, some developers still prefer a synchronous format of writing asynchronous code. To address this need, [ECMAScript 2016 (ES7)](https://www.ecma-international.org/ecma-262/7.0/index.html) introduced `async` functions and the `await` keyword to make working with promises easier.
-
-
 
 ### Async Functions with `async/await`
 
@@ -1086,7 +1044,6 @@ followers: 3203
 
 > **Note:** In many environments, `async` is necessary to use `await`—however, some new versions of browsers and Node allow using top-level `await`, which allows you to bypass creating an async function to wrap the `await` in.
 
-
 Finally, since you are handling the fulfilled promise within the asynchronous function, you can also handle the error within the function. Instead of using the `catch` method with `then`, you will use the [`try`/`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) pattern to handle the exception.
 
 Add the following highlighted code:
@@ -1113,7 +1070,6 @@ Modern asynchronous JavaScript code is most often handled with `async`/`await` s
 
 > **Note:** `async`/`await` can be reproduced by using [generators combined with promises](https://www.digitalocean.com/community/tutorials/understanding-generators-in-javascript#asyncawait-with-generators) to add more flexibility to your code. To learn more, check out our [Understanding Generators in JavaScript](https://www.digitalocean.com/community/tutorials/understanding-generators-in-javascript) tutorial.
 
-
 ## References
 
 [General async concepts :MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Concepts)
@@ -1123,7 +1079,6 @@ Modern asynchronous JavaScript code is most often handled with `async`/`await` s
 [Callbacks, Promises and Async/Await :MEDIUM](https://medium.com/front-end-weekly/callbacks-promises-and-async-await-ad4756e01d90)
 
 [Understanding Callbacks, Promises and Async/Await :DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-the-event-loop-callbacks-promises-and-async-await-in-javascript#callback-functions)
-
 
 ## Recomendations
 

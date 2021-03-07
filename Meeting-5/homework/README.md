@@ -105,11 +105,9 @@ Output:
 5. `videoDetails()` ფუნქციაში დავამატოთ ლოგიკა, რომ თუ აღნიშნული ვიდეოს ობიექტი შეიცავს სათაურს იმუშავოს ისე, როგორც წინა დავალებაში, ხოლო თუ არ შეიცავს სათაურს (title key-ს) მაშინ გაეშვას მეორე(ბოლოს დამატებული) callback ფუნქცია და არგუმენტად გადაეცეს string ტიპის ტექსტი მნიშვნელობით `"Video Title not found!"`
 6. გაითვალისწინეთ, ბოლოს დამატებული callback ფუნქციებიც იგივე პრინციპით (ნახსენები დროის შემდეგ) უნდა გაეშვას და არა პირდაპირ.
 
-
 ### გამოყენების ნაწილი
 
 1. ფუნქციებს `loginUser()`, `getUserVideos()` და `videoDetails()` დამატებულ ბოლო არგუმენტის(რომელიც error handling ის მიზნით დავამატეთ) მნიშვნელობად გადავცეთ ფუნქცია, რომელიც აიღებს დაბრუნებულ ცვლადს (რაც სტრინგად დავაბრუნეთ ამ ფუნქციებიდან) და გადასცემს მას `displayError` ფუნქციას, რომელიც თავის მხრივ კონსოლში დალოგავს ერორს იმ ტექსტით, რომელიც გადმოეცემა.
-
 
 ## Homework-2 Test
 
@@ -134,9 +132,6 @@ getPassedUsersFirstVideoTitle("user4@hw.js");
 }
 ```
 
-
-
-
 ### Test Case - 2
 
 #### Code
@@ -160,7 +155,6 @@ getPassedUsersFirstVideoTitle("user3@hw.js");
 }
 ```
 
-
 ### Test Case - 3
 
 #### Code
@@ -183,11 +177,10 @@ getPassedUsersFirstVideoTitle("user2@hw.js");
         0: {title: "video1"},
         1: {title: "video2"}
     ]
-    > Error: Videos not found!
+    > Error: Video Title not found!
         at displayError ...
 }
 ```
-
 
 ### Test Case - 4
 
@@ -215,20 +208,17 @@ getPassedUsersFirstVideoTitle("user1@hw.js");
 }
 ```
 
-
 ## Homework-3 (Using Promises)
 
 დავაკოპიროთ მეორე დავალების კოდი და ამ კოდზე დაყრდნობით callback ების ლოგიკა ჩავანაცვლოთ Promise ებით.
 
 **გაითვალისწინეთ:** error handling უნდა მოხდეს `.catch()` ში
 
-
 ## Homework-3 Test
 
 For testing use the same test cases as it is in Homework-2.
 
 Test Case ის code ებიც და Output ებიც უნდა იყოს იგივე რაც მეორე დავალების ტესტებშია მოცემული, შეიცვალა მხოლოდ ამოხსნის ლოგიკა, ამიტომ ტესტები უცვლელია.შეიცვალა მხოლოდ ამოხსნის ლოგიკა, ამიტომ ტესტები უცვლელია.
-
 
 ## Homework-4 (Using Async/Await)
 
@@ -241,7 +231,6 @@ Test Case ის code ებიც და Output ებიც უნდა ი�
 For testing use the same test cases as it is in Homework-2.
 
 Test Case ის code ებიც და Output ებიც უნდა იყოს იგივე რაც მეორე დავალების ტესტებშია მოცემული, შეიცვალა მხოლოდ ამოხსნის ლოგიკა, ამიტომ ტესტები უცვლელია.
-
 
 # Uploading My Homework
 

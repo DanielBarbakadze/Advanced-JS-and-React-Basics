@@ -211,7 +211,7 @@ getPassedUsersFirstVideoTitle("user1@hw.js");
         0: {title: "video1"},
         1: {title: "video2"}
     ]
-    "title": video1
+    "title: video1"
 }
 ```
 

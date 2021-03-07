@@ -88,4 +88,4 @@ Result must be:
 > **Note:** თუ ეს თქვენი პირველი დავალება არ არის გამოტოვეთ ნაბიჯი 1.
 
 1. შექმენით `GitHub` ის `repository` სახელად `eAcademy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
-2. თქვენს რეპოში შექმენით დირექტორიები შესაბამისად `/meeting-3/homework-1/` სადაც განათავსებთ თქვენს ამოხსნას სახელით `1-homework-solution.js`.
+2. თქვენს რეპოში შექმენით დირექტორიები შესაბამისად `/meeting-4/homework-1/` სადაც განათავსებთ თქვენს ამოხსნას სახელით `1-homework-solution.js`.

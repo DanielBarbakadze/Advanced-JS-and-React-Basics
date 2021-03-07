@@ -10,8 +10,8 @@
   * Event loop
   * Never blocking
 * More examples for The Event loop
-  * Stack
-  * Queue
+  * Stack (example)
+  * Queue (example)
 
 ## Stack
 
@@ -309,7 +309,6 @@ This queue system exists because if the timer were to add the anonymous function
 
 Now you know how the event loop uses the stack and queue to handle the execution order of code.
 
-
 ## References
 
 [Stack Data Structures :CODESDOPE](https://www.codesdope.com/course/data-structures-stacks/)
@@ -318,12 +317,16 @@ Now you know how the event loop uses the stack and queue to handle the execution
 
 [What is the difference between runtime and compile time? :Quora](https://www.quora.com/What-is-the-difference-between-runtime-and-compile-time)
 
+[Concurrency model and the event loop :MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+
 [Understanding the Event loop :DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-the-event-loop-callbacks-promises-and-async-await-in-javascript#callback-functions)
 
 ## Recomendations
 
-[What the heck is the event loop anyway? | Philip Roberts | JSConf EU](https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf)
+[What the heck is the event loop anyway? | Philip Roberts | JSConf EU :YouTube](https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf)
 
 [loupe playground by Philip Roberts](http://latentflip.com/loupe)
+
+[Async Javascript Tutorial For Beginners (Callbacks, Promises, Async Await) :YouTube](https://www.youtube.com/watch?v=_8gHHBlbziw&ab_channel=DevEd)
 
 [Javascript — How the Engine Compiles? :MEDIUM](https://medium.com/@osmanakar_65575/javascript-how-the-engine-compiles-6df6d5c6439c)

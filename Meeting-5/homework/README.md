@@ -174,8 +174,8 @@ getPassedUsersFirstVideoTitle("user2@hw.js");
         userEmail: "user2@hw.js"
     }
     "videos:" (2) [
-        0: {title: "video1"},
-        1: {title: "video2"}
+        0: {genre: "genre1"},
+        1: {genre: "genre1"}
     ]
     > Error: Video Title not found!
         at displayError ...

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add React to Website</title>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Meeting - 9</h1>
+    </header>
+
+    <div id="like_button_container"></div>
+
+    <footer>
+      <span>Instructor: Daniel Barbakadze</span>
+    </footer>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- Load our React component. -->
+    <script type="text/babel">
+      "use strict";
+
+      const e = React.createElement;
+
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { liked: false };
+        }
+
+        render() {
+          if (this.state.liked) {
+            return "You liked this.";
+          }
+
+          return (
+            <button onClick={() => this.setState({ liked: true })}>Like</button>
+          );
+        }
+      }
+
+      const domContainer = document.querySelector("#like_button_container");
+      ReactDOM.render(<LikeButton />, domContainer);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+// Color variables;
+$red: #df0000;
+$gray: #3d3d3d;
+$green: #067402;
+$yellow: #ffae00;
+$white: #ffffff;
+
+.counter {
+  span {
+    color: $gray;
+  }
+  button {
+    border: 1px solid $gray;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    color: $white;
+    padding: 3px;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      outline: none;
+    }
+  }
+  .increase {
+    background-color: $green;
+  }
+  .decrease {
+    background-color: $yellow;
+  }
+  .remove {
+    background-color: $red;
+    margin-right: unset;
+  }
+}

@@ -14,4 +14,7 @@ git clone https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics.git
 
 Instructor: [Daniel Barbakadze](https://github.com/DanielBarbakadze).
 
-Training Course by [eAcademy](https://eAcademy.ge/).
+Training Course for:
+
+- [eAcademy](https://eAcademy.ge/) (2020)
+- [OL Academy](https://olacademy.ge/courses/react) (2021)

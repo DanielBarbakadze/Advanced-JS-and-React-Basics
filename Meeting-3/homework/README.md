@@ -8,7 +8,6 @@
 2. დაამატეთ კლასი სახელად `Vehicle`, რომელსაც დაა**extend**ებს `Car` კლასი.
 3. `Vehicle` კლასის კონსტრუქტორმა უნდა მიიღოს ორი არგუმენტი `make` და `model`, შესაბამისად ამ ცვლადების აღწერა უნდა მოხდეს ამ კლასში და აღარ `Car` კლასში, შესაბამისად `Car` კლასი მას მიიღებს მემკვიდრეობით `Vehicle` სგან.
 
-
 ## Homework-1 Test
 
 use this code to test your homework.
@@ -49,7 +48,6 @@ console.log({
     getCarInfo: stodevianosto.getCarInfo(),
   },
 });
-
 ```
 
 Result must be:
@@ -87,5 +85,5 @@ Result must be:
 
 > **Note:** თუ ეს თქვენი პირველი დავალება არ არის გამოტოვეთ ნაბიჯი 1.
 
-1. შექმენით `GitHub` ის `repository` სახელად `eAcademy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
+1. შექმენით `GitHub` ის `repository` სახელად `ol-academy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
 2. თქვენს რეპოში შექმენით დირექტორიები შესაბამისად `/meeting-3/homework-1/` სადაც განათავსებთ თქვენს ამოხსნას სახელით `1-homework-solution.js`.

@@ -8,7 +8,6 @@
 2. `Car` და `Person` ფუნქციებს შეუცვალეთ სახელი შემდეგნაირად -> `createCar` და `createPerson`.
 3. გაითვალისწინეთ, რომ საერთო ფუნქციონალი უნდა იყოს გატანილი ცალკე და ყოველი ობიექტის შექმნისას ახალი ადგილი არ უნდა გამოიყოფოდეს მეხსიერებაში ერთი და იგივე ფუნქციონალის მისანიჭებლად, არამედ მას უნდა დავუსტოთ პროტოტიპში (როგორც ეს შეხვედრის მასალებშია მოცემული).
 
-
 ## Homework-1 Test
 
 use this code to test your homework.
@@ -49,7 +48,6 @@ console.log({
     getCarInfo: stodevianosto.getCarInfo(),
   },
 });
-
 ```
 
 Result must be:
@@ -87,5 +85,5 @@ Result must be:
 
 > **Note:** თუ ეს თქვენი პირველი დავალება არ არის გამოტოვეთ ნაბიჯი 1.
 
-1. შექმენით `GitHub` ის `repository` სახელად `eAcademy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
+1. შექმენით `GitHub` ის `repository` სახელად `ol-academy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
 2. თქვენს რეპოში შექმენით დირექტორიები შესაბამისად `/meeting-4/homework-1/` სადაც განათავსებთ თქვენს ამოხსნას სახელით `1-homework-solution.js`.

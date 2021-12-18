@@ -31,11 +31,14 @@ console.log("Finish");
      // your code goes here...
    }
    ```
+
 2. ამ ფუნქციამ 3 წამის შემდეგ უნდა დალოგოს კონსოლში ტექსტი `Now we have the data of user:` და ორი წერიტილის შემდეგ მიმდინარე იუზერის იმეილი
 3. ამ ფუნქციამ იგივე 3 წამის შემდეგ დალოგვასთან ერთად უნდა გამოიძახოს callback ფუნქცია და გადასცეს მას პარამეტრად შემდეგი ობიექტი
 
    ```js
-   { userEmail: email }
+   {
+     userEmail: email;
+   }
    ```
 
 #### getUserVideos() function
@@ -238,5 +241,5 @@ Test Case ის code ებიც და Output ებიც უნდა ი�
 
 > **Note:** თუ ეს თქვენი პირველი დავალება არ არის გამოტოვეთ ნაბიჯი 1.
 
-1. შექმენით `GitHub` ის `repository` სახელად `eAcademy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
+1. შექმენით `GitHub` ის `repository` სახელად `ol-academy-advanced-js-homeworks` და ლინკი დაწერეთ ჩვენს `Discord` ში `#homework-repos` thread ში.
 2. თქვენს რეპოში შექმენით დირექტორიები შესაბამისად `/meeting-4/homework-1/` სადაც განათავსებთ თქვენს ამოხსნებს - `1-homework-solution.js`, `2-homework-solution.js `, `3-homework-solution.js` და `4-homework-solution.js`.

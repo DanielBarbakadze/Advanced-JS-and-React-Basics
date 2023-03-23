@@ -11,7 +11,7 @@
 * 🪧 [instanceof and typeof](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#instanceof-and-typeof)
 * 📚 [Code Examples of Abstraction, Inheritance and Polymorphism](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#-code-examples-of-abstraction-inheritance-and-polymorphism)
 
-## 🎛 რა არის [OOP](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+## 🎛 What is [OOP](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 
 ძირითადი იდეა OOP-სი ისაა, რომ ჩვენ ვიყენებთ ობიექტებს (objects) **რეალური ცხოვრების მაგალითების მოდელირებისთვის**, რისი წარმოდგენაც გვსურს ჩვენს პროგრამებში, ან/და ვუზრუნველყოთ მარტივი გზა ფუნქციონალზე მიწვდომისთვის, რაც მის გარეშე იქნებოდა რთული ან შეუძლებელი.
 

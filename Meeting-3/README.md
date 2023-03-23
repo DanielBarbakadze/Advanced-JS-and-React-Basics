@@ -2,98 +2,124 @@
 
 განსახილველი თემები:
 
-* What is OOP (Object-oriented programming)
-* Encapsulation
-* Abstraction
-* Inheritance
-* Polymorphism
-* Classes in JS
-* Code Examples of Abstraction, Inheritance and Polymorphism
-* instanceof and typeof
+* 🎛 [რა არის OOP ? (Object-oriented programming)](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#-what-is-oop)
+  * [Encapsulation](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#encapsulation)
+  * [Abstraction](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#abstraction)
+  * [Inheritance](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#inheritance)
+  * [Polymorphism](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#polymorphism)
+* 🛗 [კლასები Javascript-ში](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#-classes-in-js)
+* 🪧 [instanceof and typeof](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#instanceof-and-typeof)
+* 📚 [Code Examples of Abstraction, Inheritance and Polymorphism](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/tree/master/Meeting-3#-code-examples-of-abstraction-inheritance-and-polymorphism)
 
-## What is OOP
+## 🎛 რა არის [OOP](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 
-The basic idea of OOP is that we use objects **to model real world things** that we want to represent inside our programs, and/or provide a simple way to access functionality that would otherwise be hard or impossible to make use of.
+ძირითადი იდეა OOP-სი ისაა, რომ ჩვენ ვიყენებთ ობიექტებს (objects) **რეალური ცხოვრების მაგალითების მოდელირებისთვის**, რისი წარმოდგენაც გვსურს ჩვენს პროგრამებში, ან/და ვუზრუნველყოთ მარტივი გზა ფუნქციონალზე მიწვდომისთვის, რაც მის გარეშე იქნებოდა რთული ან შეუძლებელი.
 
-Procedural programming is about writing procedures or **functions that perform operations on the data**, while object-oriented programming is about **creating objects that contain both** data and functions.
+პროცედურული პროგრამირება (Procedural programming) ეხება წერის პროცედურებს ან **ფუნქციებს, რომლებიც ასრულებენ ოპერაციებს მონაცემებზე**, ხოლო **ობიექტზე ორიენტირებული პროგრამირება გულისხმობს (ორივეს)** ობიექტების შექმნას, რომელიც შეძლება შეიცავდეს როგორც მონაცემებს, ასევე ფუნქციებს.
 
-Object-oriented programming has several advantages over procedural programming:
+ობიექტზე ორიენტირებულ პროგრამირებას აქვს რამდენიმე უპირატესობა პროცედურულ პროგრამირებასთან შედარებით:
 
-* OOP is faster and easier to execute
-* OOP provides a clear structure for the programs
-* OOP helps to keep the code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
-* OOP makes it possible to create full reusable applications with less code and shorter development time
+* OOP უფრო სწრაფი და ადვილად შესრულებადი (execute)
+* OOP უზრუნველყოფს მკაფიო სტრუქტურას პროგრამებისთვის
+* OOP გეხმარებათ შეინარჩუნოთ კოდი DRY ("Don't Repeat Yourself") და აადვილებს კოდთან შემდგომ მუშაობას, ცვლილებას და პრობემების აღმოფხვრას(debug)
+* OOP შესაძლებელს ხდის შექმნათ მრავალჯერადი გამოყენების(reusable) პროგრამები ნაკლები კოდით და დეველოპმენტის მეტად მცირე დროით
 
-> **Tip:**
+> **რჩევა:**
 >
-> The "Don't Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it.
+> პრინციპი "ნუ გაიმეორებ საკუთარ თავს" (DRY) გულისხმობს გამეორებადი კოდის შემცირებას. თქვენ უნდა ამოიღოთ კოდის ფრაგმენტები, რომლებიც საერთოა პროგრამისთვის და განათავსოთ ისინი ერთ ადგილას. შემდგომ კი მრავალჯერადად გამოიყენოთ იგი მისი გამეორების ნაცვლად.
 
 ## Encapsulation
 
-When talking about encapsulation, private class members are often mentioned, and that is correct, but it covers just a part of this principle.
+ენკაფსულაციაზე საუბრისას ხშირად ახსენდებათ private class members-ები და ეს სწორია, მაგრამ ის მოიცავს ამ პრინციპის მხოლოდ ნაწილს.
 
-More advanced and high-level explanations are associated with meaning Encapsulation as a concept of bundling data related variables and properties with behavioral methods in one class or code unit.
-But if we are still talking about privacy, we can give another definition.
+უფრო მაღალფარდოვანი განმარტებით ენკაფსულაცია შეიძლება წარმოდგინდეს, როგორც შეფუთვის კონცეფცია მონაცემთან დაკავშირებული ცვლადებისა და თვისებების(properties) ქცევითი მეთოდების(methods) ერთ კლასში ან კოდის ერთეულში.
 
-Encapsulation is an approach for restricting direct access to some of the data structure elements (fields, properties, methods, etc).
+მარტივ ენაზე რომ ვთქვათ:
 
-If you want to change encapsulated state, **you don’t reach out and directly mutate** some object’s props. **Instead, you call a method on the object**, and *maybe* the object will respond by updating its state.
+Encapsulation არის მიდგომა მონაცემთა სტრუქტურის ზოგიერთ ელემენტზე (fields, properties, methods, etc) პირდაპირი წვდომის შეზღუდვისათვის.
 
-Let’s look at an example.
+თუ გსურთ შეცვალოთ ენკაფსულირებული state, **თქვენ პირდაპირ არ ახდენთ წვდომას და მუტაციას** ობიექტის property ზე. **ნაცვლად, თქვენ იძახებთ ობიექტის მეთოდს**, რომელიც აახლებს state-ს, *შესაძლოა* ობიექტმა გვიპასუხოს მისი მდგომარეობის განახლებით.
+
+შევხედოთ მაგალითს:
 
 ![encapsulation-example](https://miro.medium.com/max/700/1*fBuojCESyN8ib8hJIrKWQw.jpeg)
 
-We have a real-life component - car. Usage of the abstraction principle defines the context of data that will be needed in our application. In this case, we will need a car properties model name, current speed, max speed, and boolean engine prop that will be responsible for a state if a car is turned on or off.
+ჩვენ გვაქვს რეალური კომპონენტი - მანქანა.
 
-Encapsulation principle means that we should add to the same class behavioral methods (drive, stop, etc.). Those may be used in our application and also to provide restricted access to changes in class instance’s state. We don’t want a client of our class to be able to turn off the car and then still be able to set its speed value to 100 miles per hour.
+ამ შემთხვევაში, ჩვენ დაგვჭირდება მანქანის თვისებები: მოდელი, სახელი, მიმდინარე სიჩქარე, მაქსიმალური სიჩქარე და boolean ტიპის მახასიათებელი ძრავის მდგომარეობის განსასაზღვრად, დაქოქილია თუ არა.
 
-In more complex applications you may need more properties that describe the other car subsystems like lights or wheel.
+ენკაფსულაციის პრინციპი ნიშნავს იმას, რომ ჩვენ უნდა დავუმატოთ იმავე კლასის ქცევითი მეთოდები (დაძვრა, გაჩერება და ა.შ.). ეს მახასიათებლები გამოყენებული უნდა იქნას ჩვენს აპლიკაციაში თუმცა შეზღუდული უნდა იყოს გარედან კლასის ასეთ თვისებზე წვდომა / მუტაცია.
 
-In that case, you will have to make few abstractions for those subsystems that will encapsulate its state and behavior, and then you’ll be able to compose car Class with all that functionality.
+ჩვენ არ გვინდა, რომ ჩვენი კლასის კლიენტმა შეძლოს მანქანის ჩაქრობა და შემდეგ კვლავ შეძლოს მისი სიჩქარის მნიშვნელობის განსაზღვრა 100 კმ/სთ-ით.
+უფრო რთულ პროგრამებში შეიძლება დაგჭირდეთ მეტი თვისება, რომელიც აღწერს სხვა მანქანის ქვესისტემებს, როგორიცაა განათება ან ბორბალი.
 
-## Abstraction
+ამ შემთხვევაში, თქვენ მოგიწევთ რამდენიმე აბსტრაქციის გაკეთება იმ ქვესისტემებისთვის, რომლებიც ასახავს მის მდგომარეობას და ქცევას, შემდეგ კი შეძლებთ შეადგინოთ Car კლასი მთელი ამ ფუნქციონალით
 
-Let's consider a simple program that displays information about the students and teachers at a school. Here we'll look at OOP theory in general, not in the context of any specific programming language.
+## Abstraction 
 
-There are lots of things you *could* know about a person (their address, height, shoe size, DNA profile, passport number, significant personality traits ...), but in this case we are only interested in showing their `name`, `age`, `gender`, and `interests`, and we also want to be able to write a short introduction(`bio`) about them based on this data, and get them to say hello.
+განვიხილოთ მარტივი პროგრამა, რომელიც აჩვენებს ინფორმაციას სკოლის მოსწავლეებისა და მასწავლებლების შესახებ. აქ ჩვენ განვიხილავთ OOP თეორიას ზოგადად, და არა რაიმე კონკრეტული პროგრამირების ენის კონტექსტში.
 
-This is known as **abstraction** — creating a simple model of a more complex thing, which represents its most important aspects in a way that is easy to work with for our program's purposes.
+ბევრი რამ **შეიძლება** იცოდეთ ადამიანის შესახებ (მისი მისამართი, სიმაღლე, ფეხსაცმლის ზომა, დნმ პროფილი, პასპორტის ნომერი, პიროვნების მნიშვნელოვანი თვისებები ...), მაგრამ ამ შემთხვევაში ჩვენ მხოლოდ მისი სახელის, ასაკის, სქესის, ინტერესების ჩვენება გვაინტერესებს. ჩვენ ასევე გვინდა, რომ ამ მონაცემებზე დაყრდნობით შევძლოთ დავწეროთ მოკლე ბიოგრაფია (bio) მათ შესახებ და რომ მივანიჭოთ მისასალმებელი ტექსტი.
 
-### Defining an object template
+ეს პროცესი ცნობილია როგორც **აბსტრაქცია** - უფრო რთული საგნის მარტივი მოდელის შექმნა, რომელიც წარმოადგენს მის უმნიშვნელოვანეს ასპექტებს ისე, რომ ადვილი იყოს მუშაობა ჩვენი პროგრამის მიზნებისთვის.
 
-![oop-abstraction](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS/person-diagram.png)
+### განვსაზღვროთ ობიექტის შაბლონი (Defining an object template)
 
-### Creating actual objects
+![person-diagram](https://user-images.githubusercontent.com/49524283/227342420-ea8fa69e-e890-4c3a-97db-198354abeb87.png)
 
-From our class, we can create **object instances** — objects that contain the data and functionality defined in the class. From our Person class, we can now create some actual people:
+### რეალური ობიექტების შექმნა (Creating actual objects)
 
-![oop-instantiation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS/mdn-graphics-instantiation-2-fixed.png)
+ჩვენი კლასიდან ჩვენ შეგვიძლია შევქმნათ **ობიექტის instances** — ობიექტები, რომლებიც შეიცავს კლასში განსაზღვრულ მონაცემებსა და ფუნქციონალს. ამ
+Person კლასიდან ჩვენ შეგვიძლია შევქმნათ რამდენიმე რეალური ადამიანი:
 
-When an object instance is created from a class, the class's **constructor function** is run to create it. This process of creating an object instance from a class is called **instantiation** — the object instance is **instantiated** from the class.
+![mdn-graphics-instantiation-2-fixed](https://user-images.githubusercontent.com/49524283/227343320-4586aa30-a2bc-43b8-8e33-ae89edc5f251.png)
+
+როდესაც ობიექტის instance იქმნება კლასიდან, კლასის **კონსტრუქტორის ფუნქცია** ეშვება მის შესაქმნელად. ამ
+პროცესს ეწოდება **instantiation(ასახვა)** — ობიექტის instance არის **instantiated** კლასიდან
 
 ## Inheritence
 
-In this case we don't want generic people — we want teachers and students, which are both more specific types of people. In OOP, we can create new classes based on other classes — these new **child classes** (also known as **subclasses**) can be made to **inherit** the data and code features of their **parent class**, so you can reuse functionality common to all the object types rather than having to duplicate it.  Where functionality differs between classes, you can define specialized features directly on them as needed.
+ამ შემთხვევაში ჩვენ არ გვინდა ზოგადი ადამიანები - ჩვენ გვინდა მასწავლებლები და სტუდენტები, რომლებიც ორივე უფრო კონკრეტული ტიპის ადამიანები არიან.
 
-![inheritance-oop](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS/mdn-graphics-inherited-3.png)
+OOP–ში, ჩვენ შეგვიძლია შევქმნათ ახალი კლასები სხვა კლასებზე დაყრდნობით - ეს ახალი **შვილობილი კლასები** (ასევე ცნობილია როგორც **ქვეკლასები**) **მემკვიდრეობით** იღებს მათი **მშობლების კლასის** მონაცემებისა და მახასიათებლებს. მისი დახმარებით თქვენ შეგიძლიათ ხელახლა გამოიყენოთ მშობლების ჯაჭვში არსებული ფუნქციონალი, რომელიც საერთოა ყველა ტიპის ობიექტისთვის, ვიდრე ყველა შვილობილ კლასს დუბლირებულად მიანიჭოთ.
+
+![mdn-graphics-inherited-3](https://user-images.githubusercontent.com/49524283/227345375-ce264134-69ad-4cf9-8c46-4bfdf263b9dd.png)
+
+თუ ფუნქციონალი განსხვავდება კლასებს შორის, თქვენ შეგიძლიათ განსაზღვროთ სპეციალიზებული მახასიათებლები უშუალოდ იმ კლასებზე სადაც საჭიროა. მაგალითად Greeting
 
 ## Polymorphism
 
-Continue talking about previous picture  — teachers and students share many common features such as name, gender, and age, so it is convenient to only have to define those features once. You can also define the same feature separately in different classes, as each definition of that feature will be in a different namespace. For example, a student's greeting might be of the form "Yo, I'm [firstName]" (e.g *Yo, I'm Sam*), whereas a teacher might use something more formal, such as "Hello, my name is [Prefix] [lastName], and I teach [Subject]." (e.g *Hello, My name is Mr Griffiths, and I teach Chemistry*).
+გავაგრძელოთ საუბარი წინა სურათზე - მასწავლებლები და მოსწავლეები იზიარებენ ბევრ საერთო მახასიათებელს, როგორიცაა სახელი, სქესი და ასაკი, ამიტომ მოსახერხებელია მხოლოდ ერთხელ განვსაზღვროთ ეს მახასიათებლები.
+
+ჩვენ ასევე შეგიძლიათ განვსაზღვროთ ერთი და იგივე ფუნქცია ცალ-ცალკე სხვადასხვა კლასებში, რადგან ამ მახასიათებლის თითოეული დეფინიცია იქნება სხვადასხვა namespace ში. 
+
+მაგალითად, მოსწავლის მისალმება შეიძლება იყოს:
+
+"Yo, I'm [firstName]" (მაგ. Yo, I'm Sam),
+
+ხოლო მასწავლებელმა შეიძლება გამოიყენოს რაიმე უფრო ოფიციალური:
+
+"გამარჯობა, ჩემი სახელია [prefix] [lastName] და მე ვასწავლი [Subject]."
+
+(მაგ. გამარჯობა, მე მქვია ბატონი გრიფიტსი და ვასწავლი ქიმიას).
 
 > **Note**:
 >
 > The fancy word for the ability of multiple object types to implement the same functionality is **polymorphism**. Just in case you were wondering.
 
-**Polymorphism** in Object-Oriented Programming is an ability to create a property, a function, or an object that has more than one realization.
+უფრო "დახვეწილად" რომ ვთქვათ, უნარი მრავალი ობიექტის ტიპი აიმპლემენტირებდეს ერთი და იგივე ფუნქციონალს - არის პოლიმორფიზმი.
 
-Polymorphism is an ability to substitute classes that have common functionality in sense of methods and data. In other words, **it is an ability of multiple object types to implement the same functionality** that can work in a different way but supports a common interface.
+![polymorphism-example](https://miro.medium.com/max/700/1*Pu67br76VEd7Aoa5ieMj5Q.jpeg)
 
-For example, function that expects a super class instance as an argument can work correctly with subclass instance as well, without the function needs to know about any of the subclasses types.
+პოლიმორფიზმი ობიექტზე ორიენტირებულ პროგრამირებაში არის უნარი შექმნას თვისება, ფუნქცია ან ობიექტი, რომელსაც აქვს ერთზე მეტი რეალიზაცია/გამოყენება
 
-## Classes in JS
+პოლიმორფიზმი არის კლასების შეცვლის უნარი, რომლებსაც აქვთ საერთო ფუნქციონალები მეთოდებისა და მონაცემების თვალსაზრისით.
 
-**Classes are a template** for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are not shared with ES5 class-like semantics.
+სხვა სიტყვებით რომ ვთქვათ, ეს არის უნარი მრავალი ობიექტი ტიპები აიმპლემენტირებდნენ ერთი და იგივე ფუნქციონალს, რომლებიც მუშაობენ სხვადასხვაგვარად, მაგრამ გააჩნიათ საერთო ინტერფეისი (მაგალითად, საჭე).
+
+## 🛗 Classes in JS
+
+**კლასები წარმოადგენენ შაბლონს** ობიექტების შესაქმნელად. ისინი მონაცემებს ათავსებენ (encapsulate) კოდით, რომ იმუშაონ ამ მონაცემებზე. JS კლასები აგებულია პროტოტიპებზე (prototypes), მაგრამ აქვს გარკვეული სინტაქსი და სემანტიკა, განსხვავებით ES5 class-like სემანტიკისგან.
 
 ### Defining Classes
 
@@ -474,11 +500,60 @@ l.speak();
 // Fuzzy roars.
 ```
 
-## Code Examples of Abstraction, Inheritance and Polymorphism
+## instanceof and typeof
+
+The **`instanceof` operator** tests to see if the `prototype` property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+const daniel916 = new Person('Daniel');
+
+console.log(daniel916 instanceof Person); // expected output: true
+console.log(daniel916 instanceof Object); // expected output: true
+```
+
+Same works for classes
+
+```js
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    getName() {
+        return this.name;
+    }
+}
+
+let daniel916 = new Person("Daniel");
+
+console.log(daniel916.getName()); // expected output: "Daniel"
+console.log(daniel916 instanceof Person); // expected output: true
+console.log(daniel916 instanceof Object); // expected output: true
+```
+
+The **`typeof`** operator returns a string indicating the type of the unevaluated operand.
+
+```js
+console.log(typeof 42); // expected output: "number"
+console.log(typeof true); // expected output: "boolean"
+console.log(typeof 'blubber'); // expected output: "string"
+console.log(typeof undeclaredVariable); // expected output: "undefined"
+```
+
+To verify the fact that classes are special functions, you can use the `typeof` operator of to check the type of the `Person` class.
+
+```js
+console.log(typeof Person); // function
+```
+
+---
+
+## 📚 Code Examples of Abstraction, Inheritance and Polymorphism
 
 ### Abstraction
-
-**Abstraction** is a way of creating a simple model of a more complex real-world entities, which contains the only important properties from the perspective of the context of an application.
 
 Let’s consider an example. We need a list of people in scope of our application, and we need to know their first and last name, skills, their job and salary, but in the same time we don’t need the age, height, weight, we can just skip it.
 
@@ -542,8 +617,6 @@ john.learn('es7');
 
 ### Inheritance
 
-Inheritance is an approach of sharing common functionality within a collection of classes. It provides an ability to avoid code duplication in a class that needs the same data and functions which another class already has. At the same time, it allows us to override or extend functionality that should have a different behavior.
-
 ![inheritance-medium](https://miro.medium.com/max/700/1*UKdo9OtMxozL7Evz0-vORw.png)
 
 On this diagram, `ClassB` and `ClassD` inherit functionality from `ClassA`. It means that instances of those classes, for example `ObjectB`, will have the same list of properties and methods as `ObjectA` that is an instance of `ClassA`. And still, `ObjectB` has additional properties and methods that are described in `ClassB`.
@@ -597,10 +670,6 @@ class ClassC extends ClassB {
 
 ### Polymorphism
 
-Polymorphism** in Object-Oriented Programming is an ability to create a property, a function, or an object that has more than one realization.
-
-Polymorphism is an ability to substitute classes that have common functionality in sense of methods and data. In other words, it is an ability of multiple object types to implement the same functionality that can work in a different way but supports a common interface.
-
 Let’s take a look at a real-life example of polymorphism. If you have learned how to drive one car, you’ll be able to drive any other car; it doesn’t depend on the make of car it’s configuration or inner implementation. It has the same driver interface.
 
 ![polymorphism-example](https://miro.medium.com/max/700/1*Pu67br76VEd7Aoa5ieMj5Q.jpeg)
@@ -639,55 +708,6 @@ class Rectangle extends Shape {
         return this.width * this.height;
     }
 }
-```
-
-## instanceof and typeof
-
-The **`instanceof` operator** tests to see if the `prototype` property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.
-
-```js
-function Person(name) {
-  this.name = name;
-}
-
-const daniel916 = new Person('Daniel');
-
-console.log(daniel916 instanceof Person); // expected output: true
-console.log(daniel916 instanceof Object); // expected output: true
-```
-
-Same works for classes
-
-```js
-class Person {
-    constructor(name) {
-        this.name = name;
-    }
-    getName() {
-        return this.name;
-    }
-}
-
-let daniel916 = new Person("Daniel");
-
-console.log(daniel916.getName()); // expected output: "Daniel"
-console.log(daniel916 instanceof Person); // expected output: true
-console.log(daniel916 instanceof Object); // expected output: true
-```
-
-The **`typeof`** operator returns a string indicating the type of the unevaluated operand.
-
-```js
-console.log(typeof 42); // expected output: "number"
-console.log(typeof true); // expected output: "boolean"
-console.log(typeof 'blubber'); // expected output: "string"
-console.log(typeof undeclaredVariable); // expected output: "undefined"
-```
-
-To verify the fact that classes are special functions, you can use the `typeof` operator of to check the type of the `Person` class.
-
-```js
-console.log(typeof Person); // function
 ```
 
 ## References

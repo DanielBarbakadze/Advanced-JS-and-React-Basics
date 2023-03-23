@@ -2,27 +2,25 @@
 
 განსახილველი თემები:
 
-* What is 'This'
-* .bind() | .call() | .apply()
-* Constructor Functions
-* Object prototype
+* ↗ [What is 'This'](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#what-is-this)
+* 🔃 [.bind() | .call() | .apply()](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#bind--call--apply)
+* 🏗 [Constructor Functions](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#constructor-functions)
+* 🧬 [Object prototype](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#object-prototypes)
 
-## What is '**This**'
+## ↗ What is '**This**'
 
 `this` მიგვითითებს **კონტექსტზე** სადაც მიმდინარედ ვიმყოფებით.
 
 (**კონტექსტად** მოიხსენიება ის ობიექტი, რომელსაც ეკუთვნის ფუნქცია)
 
-The JavaScript `this` keyword refers to the object it belongs to.
+მას აქვს განსხვავებული მნიშვნელობები იმისდა მიხედვით, თუ სად გამოიყენება:
 
-It has different values depending on where it is used:
-
-* In a method, `this` refers to the **owner object**.
-* Alone, `this` refers to the **global object**.
-* In a function, `this` refers to the **global object**.
-* In a function, in *strict mode*, `this` is `undefined`.
-* In an event, `this` refers to the **element** that received the event.
-* Methods like `call()`, and `apply()` can refer `this` to **any object**.
+* მეთოდში, `this` წარმოადგენს **მფლობელ ობიექტს**.
+* დამოუკიდებლად, `this` წარმოადგენს **გლობალურ ობიექტს**.
+* ფუნქციაში, `this` წარმოადგენს **გლობალურ ობიექტს**
+* ფუნქციაში, მაგრამ **strict mode** ის შემთხვევაში, არის `undefined`
+* event-ში, `this` წარმოადგენს **ელემენტს** რომელიც იღებს event-ს.
+* მეთოდებში `call()` და `apply()`` შეიძლება მიუთითებდეს **ნებისმიერ ობიექტზე**.
 
 ---
 
@@ -143,7 +141,7 @@ person.sayHello() // Context is 'person' object
 person.inner.sayHello() // Context is 'inner' object
 ```
 
-## .bind() | .call() | .apply()
+## 🔃 .bind() | .call() | .apply()
 
 ნებისმიერ ფუნქციას შეგვიძლია შევუცვალოთ კონტექსტი შემდეგი სამი დამხმარე ფუნქციით.
 
@@ -168,8 +166,7 @@ console.log(unboundGetX(2,3,4)); // The function gets invoked at the global scop
 ```
 
 ## bind
-
-The `bind()` method creates a new function that, **when called**, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+ეს მეთოდი **ქმნის** ახალ ფუნქციას (“ამზადებს”) ისე რომ, **როცა გამოვიძახებთ** საკუთარი this-ის მნიშვნელობა ექნება ის, რასაც გადავცემთ პირველ პარამეტრად, ასევე ექნება წინასწარ განსაზღვრული ფუნქციის არგუმენტიც, რომელიც წინ უსწრებს შემდეგ გადაცემულებს.
 
 ```js
 const boundGetX = unboundGetX.bind(module,2);
@@ -178,8 +175,7 @@ console.log(boundGetX(3,4));
 ```
 
 ## call
-
-The `call()` method calls a function with a given `this` value and arguments provided individually.
+ეს მეთოდი **იძახებს** ახალ ფუნქციას გადაცემული **კონტექსტის** მნიშვნელობითა და **არგუმენტებით**
 
 ```js
 const boundGetX = unboundGetX.call(module,2,3,4);
@@ -188,8 +184,7 @@ console.log(boundGetX);
 ```
 
 ## apply
-
-The `apply()` method calls a function with a given `this` value, and `arguments` provided as an array (or an [array-like object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#working_with_array-like_objects)).
+ეს მეთოდი **იძახებს** ახალ ფუნქციას გადაცემული **კონტექსტის** მნიშვნელობითა და **არგუმენტების მასივით** (array-like object)
 
 ```js
 const boundGetX = unboundGetX.apply(module,[2,3,4]);
@@ -197,15 +192,15 @@ console.log(boundGetX);
 // expected output: {x: '42, sum: 9}
 ```
 
-## Constructor Functions
+## 🏗 Constructor Functions
 
-A constructor function is a normal function.
+კონსტრუქტორის ფუნქცია არის ნორმალური ფუნქცია.
 
-> What makes the difference here is the use of the `new` operator which makes the context (`this`) in the function the new instance, thus letting it take the two properties, and returns this new instance.
->
-> Without the `new` operator, the context would have been the external one (`window` if your code is in the global scope in loose mode, `undefined` if in strict mode).
+განსხვავება ამ შემთხვევაში არის new ოპერატორის გამოყენება, რაც ფუნქციაში ქმნის ახალი კონტექსტს (`this`), რითაც შესაძლებლობას აძლევს მას მიიღოს წინასწარ განსაზღვრული პარამეტრები და დააბრუნოს ახალი instance.
 
-> Another way of saying it, is that **a function *becomes* a 'constructor' when it is being called with the `new` Operator**
+`new` ოპერატორის გარეშე კონტექსტი იქნებოდა იგივე რაც ამ scope-ს გარეთ (`window` თუ კოდი არის global scope-ში და loose mode-ით, ხოლო `undefined` strict mode-ით)
+
+სხვა სიტყვებით რომ ვთქვათ, **ფუნქცია *ხდება* კონსტრუქტორი (constructor) როცა ის გამოიძახება new ოპერატორით**
 
 ### new operator
 
@@ -286,13 +281,11 @@ var car2 = new Car('Nissan', '300ZX', 1992, ken);
 car2.owner.name // Ken Jones
 ```
 
-## Object prototypes
+## 🧬 Object prototypes
 
 პროტოტიპები წარმოადგენენ მექანიზმს, რომლის საშუალებითაც ჯავასკრიპტის ერთი ობიექტი შთამომავლობით გადასცემს მეორე ობიექტს მის თვისებებს.
 
-Prototypes are the mechanism by which JavaScript objects inherit features from one another.
-
-JavaScript is often described as a **prototype-based language** — to provide inheritance, objects can have a **`prototype` object**, which acts as a template object that it inherits methods and properties from.JavaScript is often described as a **prototype-based language** — to provide inheritance, objects can have a **`prototype` object**, which acts as a template object that it inherits methods and properties from.
+JavaScript -ს ხშირად მოიხსენიებენ როგორც **პროტოტიპზე-დაფუძნებულ** ენას - რომ წარმოვიდგინოთ შთამომავლობა, ობიექტებს შეიძლება ჰქონდეთ **`prototype` ობიექტი**, რომელიც იქცევა როგორც "შაბლონური ობიექტი", საიდანაც იგი იღებს method ებს და property ებს.
 
 ### Understanding prototype objects
 
@@ -320,11 +313,11 @@ let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
 
 თუ დავწერთ კონსოლში `person1.`, ჩვენ დავინახავთ, რომ ბრაუზერი ეცდება ავტომატურად შემოგვთავაზოს არსებული ფროფერთიები, რომელიც ამ ობიექტს გააჩნია:
 
-![default-suggestions](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes/object-available-members.png)
+<img src="https://user-images.githubusercontent.com/49524283/227318402-53c6ebc3-220e-42f2-b79d-1b7bf107672c.png" width="400px" />
 
 ამ სიაში დავინახავთ `person1` ის კონსტრუქტორის მიერ განსაზღვრულ ფროფერთებს და მეთოდებს — `Person()` — `name`, `age`, `gender`, `interests`, `bio`, და `greeting`. თუმცა ასევე დავინახავთ სხვა ფროფერთებს, როგორებიცაა — `toString`, `valueOf` და ა.შ — ეს ყოველივე განსაზღვრულია `person1` ის **prototype ობიექტის prototype ობიექტში**, რომელიც არის `Object.prototype`.
 
-![prototype-chain](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes/mdn-graphics-person-person-object-2.png)
+<img src="https://user-images.githubusercontent.com/49524283/227320364-ab7c3ae4-5e62-4619-a25e-e460081f9ae0.png" width="700px" />
 
 მას ეს ფროფერთები გადმოეცა შთამომავლობით Object სგან, ამ პროცესს კი ეწოდება — `prototype chain`.
 

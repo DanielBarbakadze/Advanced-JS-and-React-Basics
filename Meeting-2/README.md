@@ -2,10 +2,10 @@
 
 განსახილველი თემები:
 
-* ↗ [What is 'This'](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#what-is-this)
-* 🔃 [.bind() | .call() | .apply()](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#bind--call--apply)
-* 🏗 [Constructor Functions](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#constructor-functions)
-* 🧬 [Object prototype](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/edit/master/Meeting-2/README.md#object-prototypes)
+* ↗ [What is 'This'](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-2/README.md#-what-is-this)
+* 🔃 [.bind() | .call() | .apply()](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-2/README.md#-bind--call--apply)
+* 🏗 [Constructor Functions](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-2/README.md#-constructor-functions)
+* 🧬 [Object prototype](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-2/README.md#-object-prototypes)
 
 ## ↗ What is '**This**'
 

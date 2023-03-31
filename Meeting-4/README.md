@@ -2,12 +2,14 @@
 
 განსახილველი თემები:
 
-* Callback function
-* Closures (including Lexical scoping)
-* Factory funtion
+* 📞🔙 [Callback function](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-4/README.md#-callback-function)
+* 🚪📂 [Closures](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-4/README.md#-closures) (including [Lexical scoping](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-4/README.md#lexical-scoping))
+* 🏭⚙ [Factory funtion](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-4/README.md#-factory-function)
 
 
-## Callback function
+## 📞🔙 Callback function
+
+ქოლბექ ფუნქცია არის ფუნქცია, რომელიც გადაეცემა სხვა ფუნქციას როგორც არგუმენტი, და შემდეგ ხდება მისი გამოძახება გარე ფუნქციაში.
 
 A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
 
@@ -45,7 +47,7 @@ The examples above are not very exciting. They are simplified to teach you the c
 Where callbacks really shine are in asynchronous functions, where one function has to wait for another function (like waiting for a file to load).
 
 
-## Closures
+## 🚪📂 Closures
 
 A **closure** is the combination of a function bundled together (enclosed) with references to its surrounding state (the **lexical environment**).
 
@@ -301,7 +303,7 @@ console.log(s3) //log 20
 In the example above, there's a series of nested functions, all of which have access to the outer functions' scope. In this context, we can say that closures have access to **all** outer function scopes.
 
 
-## Factory Function
+## 🏭⚙ Factory Function
 
 A **factory function** is any function which is not a class or constructor that returns an object.
 

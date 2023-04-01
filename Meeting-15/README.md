@@ -146,7 +146,13 @@ The "end" prop in React Router DOM v6 NavLink allows you to specify whether the 
 
 ## useNavigate()
 
-There are instances where we want to do a programatic navigation in other words using JavaScript to navigate the user to a different page without the user clicking on a link. This is particulary usefull when we want to restrict access for certain page in our app. For example if the user tried to access the admin area we might want to kick the user out or if the user tried to visit the app dashboard without logging in we might want to redirect the user to the login page. In these kinds of scenarios we'll need to use JavaScript to run a check and redirect a user to the appropriate page. Let's see how this works:
+There are instances where we want to do a programmatic navigation in other words using JavaScript to navigate the user to a different page without the user clicking on a link. This is particularly useful when we want to restrict access to certain pages in our app.
+
+For example, if the user tried to access the admin area we might want to kick the user out or if the user tried to visit the app dashboard without logging in we might want to redirect the user to the login page.
+
+In these kinds of scenarios, we'll need to use JavaScript to run a check and redirect a user to the appropriate page.
+
+Let's see how this works:
 
 ```javascript
 import { useEffect } from "react";

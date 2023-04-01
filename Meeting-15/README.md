@@ -218,7 +218,9 @@ In a situation where we need to use dynamic routes. For example in an admin page
 
 where ':userId' is a dynamic parameter.
 
-To retrieve a dynamic URL parameter we'll need to use the useParams hook. It will return us an object that represents all the URL parameters in the current React route. The value is whatever we put inside a URL and the key refers to the name of the parameter what is registered within a route component (in this example 'userId').
+To retrieve a dynamic URL parameter we'll need to use the `useParams` hook. It will return us an object that represents all the URL parameters in the current React route.
+
+The **value** is whatever we put inside a URL and the **key** refers to the name of the parameter that is registered within a route component (in this example `'userId'`).
 
 ```javascript
 import { useParams } from "react-router-dom";

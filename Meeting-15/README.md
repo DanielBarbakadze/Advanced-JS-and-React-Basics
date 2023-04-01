@@ -167,7 +167,7 @@ useEffect(() => {
 
 **Takeaways**
 
--The useNavigate() hook allows us to programmatically redirect the user.
+- The useNavigate() hook allows us to programmatically redirect the user.
 
 - useNavigate() will return us the navigate function where we can use it whenever we want to redirect the user.
 

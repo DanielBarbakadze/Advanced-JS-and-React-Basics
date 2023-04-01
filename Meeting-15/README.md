@@ -33,7 +33,7 @@ Import BrowserRouter, Routes, Route in your index.js and App.js files.
 index.js:
 
 ```
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 root.render(
   <StrictMode>

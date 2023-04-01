@@ -140,7 +140,7 @@ function App() {
 
 The "end" prop in React Router DOM v6 NavLink allows you to specify whether the active class should be applied to the starting element or the ending element of the link. This prop is useful for when you have multiple links in the same container, and you need the active class to apply to the starting or ending element.
 
-```javascript
+```jsx
 <NavLink to="/" end>
   Home
 </NavLink>

@@ -63,7 +63,7 @@ export default function App() {
 
 **Takeaways**
 
-- Singla Page Application (SPA) is a type of modern web app where we need to download the static asets for once.
+- Single Page Application (SPA) is a type of modern web app where we need to download the static assets for once.
 - SPA utilises client-side routing for page navigation.
 - React router is a client-side routing library for React applications.
 - We use BrowserRouter, Routes and Route to register pages in our app.

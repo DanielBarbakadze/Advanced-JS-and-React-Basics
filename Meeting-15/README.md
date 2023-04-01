@@ -76,9 +76,9 @@ The Link component in React Router DOM is used to link different pages in a sing
 
 Building a single-page application means that we cant's use the `<a>` tag to do our in-app navigation because the moment we click on the `<a>` tag the whole page will refresh and that defeats the purpose of a single-page application.
 
-React router has provided a drop-in replacement for the anchor tag and it is called the <Link> component.
+React router has provided a drop-in replacement for the anchor tag and it is called the `<Link>` component.
 
-<Link> components accept a to prop which is a string indicating the path to the page you wish to link to. The Link component also accepts other props such as className and style.
+`<Link>` components accept a to prop which is a string indicating the path to the page you wish to link to. The Link component also accepts other props such as `className` and `style`.
 
 Example:
 

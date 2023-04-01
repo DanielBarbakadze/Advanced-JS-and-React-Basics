@@ -127,9 +127,9 @@ function App() {
         </nav>
 
 	<Routes>
-	        <Route path="/" element={<Home />} />
-	        <Route path="/about/" element={<About />} />
-	        <Route path="/users/" element={<Users />} />
+	  <Route path="/" element={<Home />} />
+	  <Route path="/about/" element={<About />} />
+	  <Route path="/users/" element={<Users />} />
 	</Routes>
       </>
     </BrowserRouter>

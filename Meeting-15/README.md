@@ -199,7 +199,7 @@ One important note here: we can not put a slash in front of our path, because a 
 
 **Takeaways**
 
--We can put additional <Route> components within another to group multiple routes together.
+- We can put additional `<Route>` components within one another to group multiple routes together.
 
 ## Dynamic routes
 

@@ -106,7 +106,7 @@ Basic example:
 
 ```javascript
 
-import {BrowserRouter, Routes, Route, NavLink}
+import { BrowserRouter, Routes, Route, NavLink }
 
 function App() {
   return (

@@ -86,8 +86,8 @@ Example:
 import {Link} from "react-router-dom"
 
 <nav>
-	<Link to="/">Home<Link>
-	<Link to="/products">Products</Link>
+    <Link to="/">Home<Link>
+    <Link to="/products">Products</Link>
 <nav>
 ```
 

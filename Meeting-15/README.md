@@ -68,7 +68,7 @@ export default function App() {
 - React router is a client-side routing library for React applications.
 - We use BrowserRouter, Routes and Route to register pages in our app.
 
-<Route> should be the ONLY children of <Routes>
+`<Route>` must be the ONLY children of `<Routes>`
 
 ## Link component
 

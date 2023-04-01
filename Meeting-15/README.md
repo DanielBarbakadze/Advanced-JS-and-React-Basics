@@ -94,7 +94,7 @@ import {Link} from "react-router-dom"
 **Takeaways**
 
 - We shouldn't use anchor tags for in-app navigation in a SPA, because clicking on an anchor tag will cause the whole page to refresh.
-- Instead, we can use the <Link> component provided by React Router to replace anchor tags.
+- Instead, we can use the `<Link>` component provided by React Router to replace anchor tags.
 
 ## NavLink
 

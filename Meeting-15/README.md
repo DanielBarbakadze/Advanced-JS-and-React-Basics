@@ -100,7 +100,7 @@ import {Link} from "react-router-dom"
 
 A `<NavLink>` is a special kind of `<Link>` that knows whether or not it is "active". This is useful when building a navigation menu such as a breadcrumb or a set of tabs where you'd like to show which of them is currently selected. It also provides useful context for assistive technology like screen readers.
 
-You can pass a function to either style or className that will allow you to customize the inline styling or the class string based on the component's active state. You can also pass a function as children to customize the content of the <NavLink> component based on their active state, specially useful to change styles on internal elements.
+You can pass a function to either `style` or `className` that will allow you to customize the inline styling or the class string based on the component's active state. You can also pass a function as children to customize the content of the `<NavLink>` component based on their active state, especially useful to change styles on internal elements.
 
 Basic example:
 

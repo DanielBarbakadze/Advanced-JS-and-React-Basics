@@ -237,7 +237,11 @@ function Users() {
 
 ## useLocation()
 
-useLocation in React Router DOM is a hook that allows you to access the current location (URL) of a page in a React app. It returns an object containing information about the current location such as the pathname, search, hash, state, and key. You can use this hook to get the current URL pathname to determine the current page or route, or to get the query string parameters from the search.
+useLocation in React Router DOM is a hook that allows you to access the current location (URL) of a page in a React app.
+
+It returns an object containing information about the current location such as the `pathname`, `search`, `hash`, `state`, and `key`.
+
+You can use this hook to get the current URL pathname to determine the current page or route, or to get the query string parameters from the search.
 
 ```javascript
 import { useLocation } from "react-router-dom";

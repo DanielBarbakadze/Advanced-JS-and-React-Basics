@@ -32,24 +32,39 @@ Asynchronous techniques are very useful, particularly in web programming. When a
 
 Let's look at a couple of examples that show what we mean by blocking.
 
-In [simple-sync.html](https://github.com/mdn/learning-area/tree/master/javascript/asynchronous/introducing/simple-sync.html) example ([see it running live](https://mdn.github.io/learning-area/javascript/asynchronous/introducing/simple-sync.html)), we add a click event listener to a button so that when clicked, it runs a time-consuming operation (calculates 10 million dates then logs the final one to the console) and then adds a paragraph to the DOM:
+Let's have a look at simple-sync example
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple synchronous JavaScript example</title>
+  </head>
+  <body>
+    <button>Click me</button>
+    <script>
+      const btn = document.querySelector('button');
+      btn.addEventListener('click', () => {
+        let myDate;
+        for(let i = 0; i < 10000000; i++) {
+          let date = new Date();
+          myDate = date
+        }
 
-```js
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-  let myDate;
-  for(let i = 0; i < 10000000; i++) {
-    let date = new Date();
-    myDate = date
-  }
+        console.log(myDate);
 
-  console.log(myDate);
-
-  let pElem = document.createElement('p');
-  pElem.textContent = 'This is a newly-added paragraph.';
-  document.body.appendChild(pElem);
-});
+        let pElem = document.createElement('p');
+        pElem.textContent = 'This is a newly-added paragraph.';
+        document.body.appendChild(pElem);
+      });
+    </script>
+  </body>
+</html>
 ```
+
+Explanation of the above code:
+
+We add a click event listener to a button so that when clicked, it runs a time-consuming operation (calculates 10 million dates then logs the final one to the console) and then adds a paragraph to the DOM.
 
 When running the example, open your JavaScript console then click the button — you'll notice that the paragraph does not appear until after the dates have finished being calculated and the console message has been logged. The code runs in the order it appears in the source, and the later operation doesn't run till the earlier operation has finished running.
 
@@ -68,27 +83,67 @@ for(let i = 0; i < 10000000; i++) {
 console.log(`It took ${lastTime-firstTime}ms`)
 ```
 
-In second example, [simple-sync-ui-blocking.html](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/simple-sync-ui-blocking.html) ([see it live](https://mdn.github.io/learning-area/javascript/asynchronous/introducing/simple-sync-ui-blocking.html)), we simulate something slightly more realistic that you might come across on a real page. We block user interactivity with the rendering of the UI. In this example, we have two buttons:
+Let's have a look to the second simple-sync-ui-blocking example:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple synchronous blocking JavaScript example</title>
+    <style>
+      canvas {
+        border: 1px solid rgb(0,0,255);
+      }
+    </style>
+  </head>
+  <body>
+    <p><button class="fill">Fill canvas</button><button class="alert">Click me for alert</button></p>
+    <script>
+      const canvas = document.createElement('canvas');
+      canvas.width = 640;
+      canvas.height = 480;
+      document.body.appendChild(canvas);
+      let ctx = canvas.getContext('2d');
+
+      let alertBtn = document.querySelector('.alert');
+      let fillBtn = document.querySelector('.fill');
+
+      function degToRad(degrees) {
+        return degrees * Math.PI / 180;
+      };
+
+      function random(min,max) {
+        var num = Math.floor(Math.random()*(max-min)) + min;
+        return num;
+      }
+
+      function expensiveOperation() {
+        for(let i = 0; i < 1000000; i++) {
+          ctx.fillStyle = 'rgba(0,0,255, 0.2)';
+          ctx.beginPath();
+          ctx.arc(random(0, canvas.width), random(0, canvas.height), 10, degToRad(0), degToRad(360), false);
+          ctx.fill()
+        }
+      }
+
+      fillBtn.addEventListener('click', expensiveOperation);
+
+      alertBtn.addEventListener('click', () =>
+        alert('You clicked me!')
+      );
+    </script>
+  </body>
+</html>
+```
+
+Explanation of the above code:
+
+we simulate something slightly more realistic that you might come across on a real page. We block user interactivity with the rendering of the UI. In this example, we have two buttons:
+
 
 * A "Fill canvas" button that when clicked fills the available [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) with 1 million blue circles.
 * A "Click me for alert" button that when clicked shows an alert message.
-
-```js
-function expensiveOperation() {
-  for(let i = 0; i < 1000000; i++) {
-    ctx.fillStyle = 'rgba(0,0,255, 0.2)';
-    ctx.beginPath();
-    ctx.arc(random(0, canvas.width), random(0, canvas.height), 10, degToRad(0), degToRad(360), false);
-    ctx.fill();
-  }
-}
-
-fillBtn.addEventListener('click', expensiveOperation);
-
-alertBtn.addEventListener('click', () =>
-  alert('You clicked me!')
-);
-```
 
 If you click the first button and then quickly click the second one, you'll see that the alert does not appear until the circles have finished being rendered. The first operation blocks the second one until it has finished running.
 
@@ -125,18 +180,60 @@ Main thread: Render circles to canvas --> Display alert()
 
 > **Quick Note**:
 >
-> **Web Workers** makes it possible to run a script operation in a background thread separate from the main execution thread of a web application. The advantage of this is that laborious processing can be performed in a separate thread, allowing the main (usually the UI) thread to run without being blocked/slowed down.
+> **Web Workers** makes it possible to run a script operation in a background thread separate from the main execution thread of a web application.
+> 
+> The advantage of this is that laborious/heavy processing can be performed in a separate thread, allowing the main (usually the UI) thread to run without being blocked/slowed down.
+>
+> 
 
-After some time, JavaScript gained some tools to help with such problems. [Web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) allow you to send some of the JavaScript processing off to a separate thread, called a worker so that you can run multiple JavaScript chunks simultaneously. You'd generally use a worker to run expensive processes off the main thread so that user interaction is not blocked.
+After some time, JavaScript gained some tools to help with such problems with **Web Workers**.
+
+**The advantage of Web Workers:**
+[Web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) makes it possible to run a script operation in a background thread separate from the main execution thread of a web application. You'd generally use a worker to run expensive processes off the main thread so that user interaction is not blocked.
 
 ```bash
   Main thread: Task A --> Task C
 Worker thread: Expensive task B
 ```
 
-With this in mind, have a look at [simple-sync-worker.html](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/simple-sync-worker.html) ([see it running live](https://mdn.github.io/learning-area/javascript/asynchronous/introducing/simple-sync-worker.html)), again with your browser's JavaScript console open. This is a rewrite of our previous example that calculates the 10 million dates in a separate worker thread. Now when you click the button, the browser is able to display the paragraph before the dates have finished calculating. The first operation no longer blocks the second.
+With this in mind, have a look at simple-sync-worker example:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple synchronous JavaScript example</title>
+  </head>
+  <body>
+    <button>Click me</button>
+    <script>
+      const btn = document.querySelector('button');
+      const worker = new Worker('worker.js');
+
+      btn.addEventListener('click', () => {
+        worker.postMessage('Go!');
+
+        let pElem = document.createElement('p');
+        pElem.textContent = 'This is a newly-added paragraph.';
+        document.body.appendChild(pElem);
+      });
+
+      worker.onmessage = function(e) {
+        console.log(e.data);
+      }
+    </script>
+  </body>
+</html>
+```
+
+Explanation of the above code:
+
+Again with your browser's JavaScript console open. This is a rewrite of our previous example that calculates the 10 million dates in a separate worker thread. Now when you click the button, the browser is able to display the paragraph before the dates have finished calculating. The first operation no longer blocks the second.
 
 ### Asynchronous code
+
+**The disadvantage of Web Workers:**
 
 Web workers are pretty useful, but **they do have their limitations**. A major one is they are not able to access the **DOM** — you can't get a worker to directly do anything to update the UI. We couldn't render our 1 million blue circles inside our worker; it can basically just do the number crunching.
 
@@ -172,20 +269,34 @@ Let's take a first look at some of the different asynchronous techniques, showin
 
 To allow us to understand what **[asynchronous](https://developer.mozilla.org/en-US/docs/Glossary/Asynchronous)** JavaScript is, we ought to start off by making sure we understand what **[synchronous](https://developer.mozilla.org/en-US/docs/Glossary/Synchronous)** JavaScript is.
 
-A lot of the functionality we have looked at in previous section is synchronous and the result is returned as soon as the browser can do so. Let's look at a simple example ([see it live here](https://mdn.github.io/learning-area/javascript/asynchronous/introducing/basic-function.html), and [see the source](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/basic-function.html)):
+A lot of the functionality we have looked at in previous section is synchronous and the result is returned as soon as the browser can do so.
 
-```js
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-  alert('You clicked me!');
+Let's look at a simple basic-function example
 
-  let pElem = document.createElement('p');
-  pElem.textContent = 'This is a newly-added paragraph.';
-  document.body.appendChild(pElem);
-});
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple synchronous JavaScript example</title>
+  </head>
+  <body>
+    <button>Click me</button>
+    <script>
+    const btn = document.querySelector('button');
+    btn.addEventListener('click', () => {
+      alert('You clicked me!');
+
+      let pElem = document.createElement('p');
+      pElem.textContent = 'This is a newly-added paragraph.';
+      document.body.appendChild(pElem);
+    });
+    </script>
+  </body>
+</html>
 ```
 
-In this block, the lines are executed one after the other:
+Look at the script part. In this block, the lines are executed one after the other:
 
 1. We grab a reference to a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element that is already available in the DOM.
 2. We add a `click` event listener to it so that when the button is clicked:
@@ -206,7 +317,11 @@ So in the example above, after you've clicked the button the paragraph won't app
 
 ### Asynchronous JavaScript
 
-For reasons illustrated earlier (e.g. related to blocking), many Web API features now use asynchronous code to run, especially those that access or fetch some kind of resource from an external device, such as fetching a file from the network, accessing a database and returning data from it, accessing a video stream from a web cam, or broadcasting the display to a VR headset.
+For reasons illustrated earlier (e.g. related to blocking), many Web API features now use asynchronous code to run, especially those that access or fetch some kind of resource from an external device, such as:
+* Fetching a file from the network
+* Accessing a database and returning data from it
+* Accessing a video stream from a web cam
+* Broadcasting the display to a VR headset.
 
 Why is this difficult to get to work using synchronous code? Let's look at a quick example. When you fetch an image from a server, you can't return the result immediately. That means that the following (pseudocode) wouldn't work:
 
@@ -216,9 +331,16 @@ let blob = response.blob();
 // display your image blob in the UI somehow
 ```
 
+> **Quick revise**:
+>
+> The blob is a file-like object of immutable, raw data. they can be read as text or binary data.
+
 That's because you don't know how long the image will take to download, so when you come to run the second line it will throw an error (possibly intermittently, possibly every time) because the `response` is not yet available. Instead, you need your code to wait until the `response` is returned before it tries to do anything else to it.
 
-There are three main types of asynchronous code style you'll come across in JavaScript code, **old-style callbacks**, **promise-style code** and newer **async/await**.
+There are **three main types of asynchronous code style** you'll come across in JavaScript code:
+* **Old-style callbacks**
+* **Promise-style code**
+* Newer **async/await**.
 
 #### Async callbacks
 
@@ -246,19 +368,17 @@ Promises are little new style of async code. A good example is the `fetch()` API
 
 ```js
 fetch('products.json')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(json) {
-        products = json;
-        initialize();
-    })
-    .catch(function(err) {
-        console.log('Fetch problem: ' + err.message);
-    });
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((json) => initialize(json))
+  .catch((err) => console.error(`Fetch problem: ${err.message}`));
 ```
 
-Here we see `fetch``()` taking a single parameter — the URL of a resource you want to fetch from the network — and returning a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The promise is an object representing the completion or failure of the async operation. It represents an intermediate state, as it were. In essence, it's the browser's way of saying "I promise to get back to you with the answer as soon as I can," hence the name "promise."
+Here we see `fetch()` taking a single parameter — the URL of a resource you want to fetch from the network — and returning a [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). The promise is an object representing the completion or failure of the async operation. It represents an intermediate state, as it were. In essence, it's the browser's way of saying "I promise to get back to you with the answer as soon as I can," hence the name "promise."
 
 We've then got three further code blocks chained onto the end of the `fetch()`:
 
@@ -1081,6 +1201,8 @@ Modern asynchronous JavaScript code is most often handled with `async`/`await` s
 [Understanding Callbacks, Promises and Async/Await :DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-the-event-loop-callbacks-promises-and-async-await-in-javascript#callback-functions)
 
 ## Recomendations
+
+[⭐️🎀 JavaScript Visualized: Promises & Async/Await :DEV.TO](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 
 [Asynchronous JavaScript: From Callback Hell to Async and Await :Toptal](https://www.toptal.com/javascript/asynchronous-javascript-async-await-tutorial)
 

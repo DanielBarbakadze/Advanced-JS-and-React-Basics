@@ -19,6 +19,7 @@ In our day to day life, we see stacks of plates, coins, etc. All these stacks ha
 
 ![stack](https://www.codesdope.com/staticroot/images/ds/stack1.png)
 
+
 In Computer Science also, a stack is a data structure which follows the same kind of rules i.e., the most recently added item is removed first. It works on **LIFO (Last In First Out)** policy. It means that the item which enters at last is removed first.
 
 ![stack-2](https://www.codesdope.com/staticroot/images/ds/stack2.png)
@@ -121,7 +122,12 @@ JavaScript has a concurrency model based on an **event loop**, which is responsi
 
 #### Visual representation
 
-![cmatel-vr](https://mdn.mozillademos.org/files/17124/The_Javascript_Runtime_Environment_Example.svg)
+![Event loop 001](https://user-images.githubusercontent.com/49524283/230685435-71802acb-dbcb-4751-9214-2523e7f700d0.jpeg)
+
+In action:
+
+![Event loop](https://user-images.githubusercontent.com/49524283/230685454-4fcdeddc-5dce-4f7d-b507-d5d95d140c9e.gif)
+
 
 #### Stack
 
@@ -308,6 +314,47 @@ This queue system exists because if the timer were to add the anonymous function
 > **Note:** There is also another queue called the *job queue* or *microtask queue* that handles promises. Microtasks like promises are handled at a higher priority than macrotasks like `setTimeout`.
 
 Now you know how the event loop uses the stack and queue to handle the execution order of code.
+
+### Examples with visualisation
+
+Let’s take a look at an example and see what’s happening when we’re running the following code in a browser:
+
+```jsx
+const foo = () => console.log("First");
+const bar = () => setTimeout(() => console.log("Second"), 500);
+const baz = () => console.log("Third");
+
+bar();
+foo();
+baz();
+Output:
+First
+Third 
+Second
+```
+
+![0f65e1_ea7f9a1c57824a96ab44f044c1393d10_mv2](https://user-images.githubusercontent.com/49524283/230685721-5c1c2e82-c43d-42bd-8bc5-e5928e8f8237.gif)
+
+
+1. We invoke bar. bar returns a setTimeout function.
+
+2. The callback we passed to setTimeout gets added to the Web API, the setTimeout function and bar get popped off the callstack.
+
+3. The timer runs, in the meantime foo gets invoked and logs First. foo returns (undefined),baz gets invoked, and the callback gets added to the queue.
+
+4. baz logs Third. The event loop sees the callstack is empty after baz returned, after which the callback gets added to the call stack.
+
+5. The callback logs Second.
+
+The event loop proceeds to execute all the callbacks waiting in the task queue. Inside the task queue, the tasks are broadly classified into two categories, namely micro-tasks and macro-tasks.
+
+#### Macro-tasks within an event loop:
+
+![0f65e1_a50ce7f9ceec402e82e63c6ccddc40a4_mv2](https://user-images.githubusercontent.com/49524283/230685893-0bf87eff-3393-4e79-a760-1a2dfd4794f7.gif)
+
+See more visualised content here:
+1. https://www.thetechplatform.com/post/the-javascript-event-loop-explained
+2. https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif
 
 ## References
 

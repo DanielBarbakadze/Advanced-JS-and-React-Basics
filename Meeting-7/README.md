@@ -2,10 +2,10 @@
 
 განსახილველი თემები:
 
-* How does the Internet work?
-* How the Web works?
-* What is the difference between webpage, website, web server, and search engine?
-* What is a web server?
+* [How does the Internet work?](#how-does-the-internet-work)
+* [How the Web works?](#how-the-web-works)
+* [Difference between webpage, website, web server, and search engine](#რა-განსხვავებაა-webpage-website-web-server-და-search-engine-შორის)
+* [What is a web server?](#what-is-a-web-server)
 * Introducing Node
   * Your first running web server
 
@@ -23,196 +23,153 @@ When two computers need to communicate, you have to link them, either physically
 >
 > In this examples we will only talk about physical cables, but wireless networks work the same.
 
-![simple-network](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-1.png)
+![simple-network](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-1.png)
 
-Such a network is not limited to two computers. You can connect as many computers as you wish. But it gets complicated quickly. If you're trying to connect, say, ten computers, you need 45 cables, with nine plugs per computer!
+ასეთი ქსელი არ არის შეზღუდული მხოლოდ ორი კომპიუტერით. ჩვენ რათქმაუნდა შეგვიძლია დავაკავშიროთ იმდენი კომპიუტერი, რამდენიც გვსურ. თუმცა ის ძალიან სწრაფად რთულდება. მაგალითად, თუ ვცდით დავაკავშიროთ ათი კომპიუტერი, დაგვჭირდებათ 45 კაბელი, თითო კომპიუტერზე ცხრა შემაერთებლით!
 
-![simple-network-2](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-2.png)
+![simple-network-2](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-2.png)
 
-To solve this problem, each computer on a network is connected to a special tiny computer called a *router*.
+ამ პრობლემის გადასაჭრელად, ქსელში არსებული თითოეული კომპიუტერი დაკავშირებულია სპეციალურ პატარა კომპიუტერთან, რომელსაც ეწოდება *router*.
 
-This *router* has only one job: like a signaler at a railway station, **it makes sure that a message sent from a given computer arrives at the right destination computer.** To send a message to computer B, computer A must send the message to the router, which in turn forwards the message to computer B and makes sure the message is not delivered to computer C.
+ამ *როუტერს* აქვს მხოლოდ ერთი სამუშაო (რკინიგზის სადგურის სიგნალის მსგავსად):
 
-Once we add a router to the system, our network of 10 computers only requires 10 cables: a single plug for each computer and a router with 10 plugs.
+**ის გვიდასტურებს, რომ მოცემული კომპიუტერიდან გაგზავნილი შეტყობინება მივიდა სწორი დანიშნულების კომპიუტერში.**
 
-![simple-network-3](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-3.png)
+B კომპიუტერზე შეტყობინების გასაგზავნად, A კომპიუტერმა უნდა გაუგზავნოს შეტყობინება როუტერს, რომელიც თავის მხრივ გადასცემს შეტყობინებას B კომპიუტერს და დარწმუნდება, რომ შეტყობინება არ მიეწოდება C კომპიუტერს.
 
+მას შემდეგ, რაც სისტემას როუტერს დავამატებთ, ჩვენი 10 კომპიუტერისგან შემდგარი ქსელი საჭიროებს მხოლოდ 10 კაბელს: ერთი გამომავალი კაბელი თითოეული კომპიუტერიდან და როუტერი 10 შემავალი კაბელით.
+
+![simple-network-3](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-3.png)
 
 ### A network of networks
 
-So far so good. But what about connecting hundreds, thousands, billions of computers? Of course a single *router* can't scale that far, but, if you read carefully, we said that a *router* is a computer like any other, so what keeps us from connecting two *routers* together? Nothing, so let's do that.
+ჯერჯერობით ყველაფერი კარგადაა. მაგრამ რა მოხდება თუ შევეცდებით ასობით, ათასობით, მილიარდობით კომპიუტერის დაკავშირებას? რა თქმა უნდა, ერთი *როუტერი* ვერ მასშტაბირებს ასე შორს, მაგრამ, თუ ყურადღებით წაიკითხავთ, ჩვენ ვთქვით, რომ *როუტერი* არის კომპიუტერი, როგორც ყველა სხვა, ასე რომ, რა გვიშლის ხელს ორი *როუტერის* ერთმანეთთან დაკავშირებაში? არც არაფერი, ჰოდა ასეც მოვიქცეთ.
 
-![network-of-networks](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-4.png)
+![network-of-networks](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-4.png)
 
-By connecting computers to routers, then routers to routers, we are able to scale infinitely.
+კომპიუტერების როუთერთან(მარშრუტიზატორებთან) დაკავშირებით და შემდეგ როუტერების სხვა როუტერებთან დაკავშირებით, ჩვენ შეგვიძლია ქსელის უსასრულოდ მასშტაბირება.
 
-![network-of-networks-2](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-5.png)
+![network-of-networks-2](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-5.png)
 
-Such a network comes very close to what we call the Internet, but we're missing something. We built that network for our own purposes. There are other networks out there: your friends, your neighbors, anyone can have their own network of computers. But it's not really possible to set cables up between your house and the rest of the world, so how can you handle this?
+ასეთი ქსელი ძალიან უახლოვდება იმას, რასაც ჩვენ ინტერნეტს ვუწოდებთ, მაგრამ რაღაც გვაკლია. ჩვენ შევქმენით ეს ქსელი ჩვენი საკუთარი მიზნებისთვის. თუმცა შესაძლოა არსებობდეს ასევე სხვა ქსელები: თქვენს მეგობრებს, მეზობლებს, ნებისმიერს შეუძლია ჰქონდეს კომპიუტერების საკუთარი ქსელი. მაგრამ ნამდვილად შეუძლებელია კაბელის გაბმა თქვენს სახლსა და დანარჩენ სამყაროს შორის, ასე რომ, როგორ მოვაგვაროთ ეს პრობლემა?
 
-Well, there are already cables linked to your house, for example, electric power and telephone. The telephone infrastructure already connects your house with anyone in the world so it is the perfect wire we need.
+ნუ, თუ დავფიქრდებით ჩვენ სახლებში უკვე არსებობს კაბელები, მაგალითად, ელექტროენერგიისა და ტელეფონისთვის. სატელეფონო ინფრასტრუქტურა უკვე აკავშირებს თქვენს სახლს მსოფლიოს ნებისმიერ ადამიანთან, ასე რომ, ეს არის იდეალური კაბელი, რომელიც ჩვენ გამოგვადგება.
 
-To connect our network to the telephone infrastructure, we need a special piece of equipment called a *modem*. This *modem* turns the information from our network into information manageable by the telephone infrastructure and vice versa.
+ჩვენი ქსელის სატელეფონო ინფრასტრუქტურასთან დასაკავშირებლად, ჩვენ გვჭირდება სპეციალური მოწყობილობა, რომელსაც ეწოდება *modem*. ეს *მოდემი* აქცევს ინფორმაციას ჩვენი ქსელიდან სატელეფონო ინფრასტრუქტურის მიერ მართვად/გასაგებ ინფორმაციად და პირიქით.
 
-![modem](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-6.png)
+![modem](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-6.png)
 
-So we are connected to the telephone infrastructure. The next step is to send the messages from our network to the network we want to reach. To do that, we will connect our network to an Internet Service Provider (ISP). An ISP is a company that manages some special *routers* that are all linked together and can also access other ISPs' routers. So the message from our network is carried through the network of ISP networks to the destination network. The Internet consists of this whole infrastructure of networks.
+მისი დახმარებით, ჩვენ უკვე ვართ დაკავშირებული სატელეფონო ინფრასტრუქტურასთან. შემდეგი ნაბიჯი არის შეტყობინებების გაგზავნა ჩვენი ქსელიდან ნებისმიერ სხვა ქსელთან, რომელსაც გვინდა დავუკავშირდეთ.
 
-![ISP](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/internet-schema-7.png)
+ამისათვის ჩვენ ჩვენს ქსელს დავუკავშირებთ Internet Service Provider (ISP). ინტერნეტ სერვის პროვაიდერი არის კომპანია, რომელიც მართავს სპეციალურ *როუტერებს*, რომლებიც ერთმანეთთან არის დაკავშირებული და ასევე შეუძლია წვდომა სხვა პროვაიდერების როუტერებზე.
+
+ასე რომ, შეტყობინება ჩვენი ქსელიდან გადადის პროვაიდერი კომპანიის ქსელების გავლით დანიშნულების ქსელში.
+
+<b>"ინტერნეტი"</b> გულისხმობს ამ ქსელების მთელ ინფრასტრუქტურას.
+
+<img src="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/internet-schema-7.png" height="800px" />
 
 
 ### Finding computers
 
-If you want to send a message to a computer, you have to specify which one. Thus any computer linked to a network has a unique address that identifies it, called an "IP address" (where IP stands for *Internet Protocol*). It's an address made of a series of four numbers separated by dots, for example: `192.168.2.10`.
+თუ გსურთ გაგზავნოთ შეტყობინება კომპიუტერზე, უნდა მიუთითოთ რომელ კომპიუტერზე გსურთ კონკრეტულად. მსგავსად, ქსელთან დაკავშირებულ ნებისმიერ კომპიუტერს აქვს უნიკალური მისამართი, რომელიც განსაზღვრავს მის უნიკალურობას, მას ეწოდება "IP მისამართი" (სადაც IP ნიშნავს *ინტერნეტ პროტოკოლს*). ეს არის მისამართი, რომელიც შედგება წერტილებით გამოყოფილი ოთხი რიცხვისგან, მაგალითად: `192.168.2.10`.
 
-That's perfectly fine for computers, but we human beings have a hard time remembering that sort of address. To make things easier, we can alias an IP address with a human readable name called a **domain name**. For example (at the time of writing; IP addresses can change) `google.com` is the domain name used on top of the IP address `173.194.121.32`. So using the domain name is the easiest way for us to reach a computer over the Internet.
+ეს სავსებით საკმარისია კომპიუტერებისთვის, მაგრამ ჩვენ ადამიანებს გვიჭირს ასეთი მისამართის დამახსოვრება. საქმეების გასაადვილებლად, ჩვენ შეგვიძლია ზედმეტსახელები დავარქვათ IP მისამართებს რათა ადამიანისთვის უფრო მარტივი წასაკითხი გახდეს, ამას ეწოდება **დომენის სახელი**(domain name). მაგალითად (IP მისამართები შეიძლება შეიცვალოს) `google.com` არის დომენის სახელი, რომელიც გამოიყენება შემდეგი IP მისამართის მისანიშნებლად `173.194.121.32`. თუმცა თუ აიპი შეიცვლება ჩვენ ეს არ გვადარდებს, რადგან იგივე დომენი უკვე ახხალ მისამართს მიანიშნებს ნაცვალდ ძველისა. ასე რომ, დომენის სახელის გამოყენება ჩვენთვის ყველაზე მარტივი გზაა დავამყაროთ კავშირი ქსელში არსებულ კომპიუტერებთან ინტერნეტის მეშვეობით.
 
-![google-ip-dn](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work/dns-ip.png)
+![google-ip-dn](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work/dns-ip.png)
 
 
 ### Internet and the web
 
-As you might notice, when we browse the Web with a Web browser, we usually use the domain name to reach a website. Does that mean the Internet and the Web are the same thing? It's not that simple.
+როგორც თქვენ შეამჩნევთ, როდესაც ვებ ბრაუზერში ვართ, ჩვენ ვიყენებთ დომენის სახელს ვებსაიტთან დასაკავშირებლად. ნიშნავს თუ არა ეს, რომ Internet და Web ერთი და იგივე რამაა? პასხუი არც ისე მარტივია.
 
-As we saw, the Internet is a technical infrastructure which allows billions of computers to be connected all together. Among those computers, some computers (called *Web servers*) can send messages intelligible to web browsers.
+როგორც ვნახეთ, Internet არის ტექნიკური ინფრასტრუქტურა, რომელიც საშუალებას აძლევს მილიარდობით კომპიუტერს ერთმანეთს დაუკავშირდნენ. ამ დაკავშირებულ კომპიუტერებს შორის, არსებობს ზოგიერთი კომპიუტერი რომელსაც (ე.წ. *ვებ სერვერებს*) შეუძლია ვებ-ბრაუზერებისთვის გასაგები შეტყობინებების გაგზავნა.
 
-The **Internet** is an infrastructure, whereas the **Web** is a service built on top of the infrastructure.
-
+რომ შევაჯამოთ, **Internet** არის **ინფრასტრუქტურა**, ხოლო **Web** არის ამ ინფრასტრუქტურაზე დაშენებული **სერვისი**.
 
 ## How the Web works
 
-*How the web works* provides a simplified view of what happens when you view a webpage in a web browser on your computer or phone.
+გააზრება თუ *როგორ მუშაობს ვები* გვეხმარება უფრო მარტივად დავინახოთ რა ხდება, როდესაც უყურებთ ვებგვერდს ბრაუზერში (კომპიუტერში ან ტელეფონში).
 
-Computers connected to the web are called **clients** and **servers**. A simplified diagram of how they interact might look like this:
+ინტერნეტთან დაკავშირებულ კომპიუტერებს ეწოდება **კლიენტები** და **სერვერები**. მათი ურთიერთქმედების გამარტივებული დიაგრამა შეიძლება ასე გამოიყურებოდეს:
 
 ![client-to-server](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works/simple-client-server.png)
 
-
-* Clients are the typical web user's internet-connected devices (for example, your computer connected to your Wi-Fi, or your phone connected to your mobile network) and web-accessing software available on those devices (usually a web browser like Firefox or Chrome).
-* Servers are computers that store webpages, sites, or apps. When a client device wants to access a webpage, a copy of the webpage is downloaded from the server onto the client machine to be displayed in the user's web browser.
+* კლიენტებს წარმოადგენენ მომხმარებლის ინტერნეტთან დაკავშირებული ნებისმიერი მოწყობილობები (მაგალითად, თქვენი კომპიუტერი დაკავშირებული თქვენს Wi-Fi-სთან, ან თქვენი ტელეფონი დაკავშირებულია თქვენს მობილურ ქსელთან) და ასევე ვებ-წვდომის პროგრამული უზრუნველყოფები, რომლებიც ხელმისაწვდომია ამ მოწყობილობებზე (იგულისხმება, ვებ ბრაუზერი, როგორიცაა Firefox, Chrome ან სხვა).
+* სერვერები არიან კომპიუტერები, რომლებიც ინახავენ ვებგვერდებს, საიტებს ან აპლიკაციებს. როდესაც კლიენტ მოწყობილობას სურს წვდომა ვებ გვერდზე, ვებგვერდის ასლი ჩამოიტვირთება სერვერიდან კლიენტის მოწყობილობაზე, რათა გამოისახოს/დაიხატოს შედეგი მომხმარებლის ვებ ბრაუზერში.
 
 > **Note:**
 >
 > It's highly recomended to learn this topic deeply. [(one good resource)](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works)
 
 
-## What is the difference between webpage, website, web server, and search engine?
+## რა განსხვავებაა webpage, website, web server, და search engine შორის?
 
-It's easy to confuse these terms sometimes since they refer to related but different functionalities.
-
-
+ძალიან ადვილია ამ ტერმინების ერთმანეთში არევა, რადგან ისინი ერთმანეთთან მჭიდროდ არიან დაკავშირებული, მაგრამ წარმოადგენენ განსხვავებულ ფუნქციებს.
 
 #### web page
 
-**A document** which can be displayed in a web browser (such as Firefox, Google Chrome, etc). These are also often called just "pages."
+**დოკუმენტი**, რომელიც შეიძლება იყოს ნაჩვენები ვებ ბრაუზერში (როგორიცაა Firefox, Google Chrome და ა.შ.). მათ ასევე ხშირად უწოდებენ უბრალოდ "გვერდებს".
 
 #### website
 
-**A collection of web pages** which are grouped together and usually connected together in various ways. Often called a "web site" or a "site."
+**ვებ გვერდების ერთობლიობა**, რომლებიც დაჯგუფებულია და ჩვეულებრივ დაკავშირებულია ერთმანეთთან სხვადასხვა გზით. ხშირად უწოდებენ "ვებ-საიტს" ან მხოლოდ "საიტს".
 
 #### web server
 
-**A computer** that hosts a website on the Internet.
+**კომპიუტერი**, რომელიც მასპინძლობს(hosts/ჰოსტავს) ვებსაიტს ინტერნეტში.
 
 #### search engine
 
-A web **service** that helps you find other web pages, such as Google, Bing, Yahoo, or DuckDuckGo. Search engines are normally accessed through a web browser.
-
-
-Let's look at a simple analogy — a public library. This is what you would generally do when visiting a library:
-
-1. Find a search index and look for the title of the book you want.
-2. Make a note of the catalog number of the book.
-3. Go to the particular section containing the book, find the right catalog number, and get the book.
-
-
-Let's compare the library with a web server:
-
-* The library is like a web server. It has several sections, which is similar to a web server hosting multiple websites.
-* The different sections (science, math, history, etc.) in the library are like websites. Each section is like a unique website (two sections do not contain same books).
-* The books in each section are like webpages. One website may have several webpages, e.g., the Science section (the website) will have books on heat, sound, thermodynamics, statics, etc. (the webpages). Webpages can each be found at a unique location (URL).
-* The search index is like the search engine. Each book has its own unique location in the library (two books cannot be kept at the same place) which is specified by the catalog number.
+ვებ **სერვისი**, რომელიც დაგეხმარებათ იპოვოთ სხვა ვებ გვერდები, როგორიცაა Google, Bing, Yahoo ან DuckDuckGo. საძიებო სისტემებზე წვდომა ჩვეულებრივ ხდება ვებ ბრაუზერის საშუალებით.
 
 
 ## What is a web server?
 
-The term *web server* can refer to hardware or software, or both of them working together.
+სანამ დავიწყებთ ვებ სერვერზე საუბარს, მოდი შევხედოთ მარტივ ანალოგიას საჯარო ბიბლიოთეკის მაგალითზე.
 
-1. On the hardware side, a web server is a computer that stores web server software and a website's component files. (for example, HTML documents, images, CSS stylesheets, and JavaScript files) A web server connects to the Internet and supports physical data interchange with other devices connected to the web.
-2. On the software side, a web server includes several parts that control how web users access hosted files. At a minimum, this is an *HTTP server*. An HTTP server is software that understands [URLs](https://developer.mozilla.org/en-US/docs/Glossary/URL) (web addresses) and [HTTP](https://developer.mozilla.org/en-US/docs/Glossary/HTTP) (the protocol your browser uses to view webpages). An HTTP server can be accessed through the domain names of the websites it stores, and it delivers the content of these hosted websites to the end user's device.
+ეს არის ის, რასაც ჩვეულებისამებრ გააკეთებდით ბიბლიოთეკაში მისვლისას:
 
-At the most basic level, whenever a browser needs a file that is hosted on a web server, the browser requests the file via HTTP. When the request reaches the correct (hardware) web server, the (software) *HTTP server* accepts the request, finds the requested document, and sends it back to the browser, also through HTTP. (If the server doesn't find the requested document, it returns a [404](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404) response instead.)
+1. წიგნების სიის კატალოგში მოძებნით თქვენთვის სასურველი წიგნის სათაურს და ინდექსს(ნომერს).
+2. ჩაინიშნავთ წიგნის კატალოგის ნომერი.
+3. მიხვალთ წიგნების შემცველ კონკრეტულ განყოფილებაში, იპოვით კატალოგის სწორ ნომერს და მიიღებთ წიგნი.
 
-![web-server-to-browser](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server/web-server.svg)
+მოდით შევადაროთ ბიბლიოთეკა ვებ სერვერს:
 
-To publish a website, you need either a static or a dynamic web server.
+* ბიბლიოთეკა ვებ სერვერს ჰგავს. მას აქვს რამდენიმე განყოფილება, რომელიც ჰგავს ვებ სერვერს, რომელიც მასპინძლობს(hosts) მრავალ ვებსაიტს.
+* ბიბლიოთეკაში არსებული სხვადასხვა განყოფილებები (მეცნიერება, მათემატიკა, ისტორია და ა.შ.) ვებსაიტების მსგავსია. თითოეული სექცია გავს უნიკალური ვებსაიტს (ანუ, ორი ან რამდენიმე სექცია არ შეიცავს ერთსა და იმავე წიგნებს).
+* წიგნები თითოეული განყოფილება ჰგავს ვებგვერდებს. ერთ ვებსაიტს შეიძლება ჰქონდეს რამდენიმე ვებგვერდი, მაგალითად, მეცნიერების განყოფილებას (საიტს) ექნება წიგნები სითბოს, ხმის, თერმოდინამიკის, სტატიკის და ა.შ. (ვებგვერდები). თითოეული ვებგვერდის ნახვა შესაძლებელია უნიკალურ ადგილას (URL).
+* საძიებო ინდექსი საძიებო სისტემას ჰგავს. თითოეულ წიგნს აქვს თავისი უნიკალური ადგილმდებარეობა ბიბლიოთეკაში (ორი წიგნის შენახვა არ შეიძლება ერთსა და იმავე ადგილას), რომელიც მითითებულია კატალოგის ნომრით.
 
-A **static web server**, or stack, consists of a computer (hardware) with an HTTP server (software). We call it "static" because the server sends its hosted files as-is to your browser.
+ტერმინი *ვებ სერვერი* შეიძლება ეხებოდეს როგორც hardware ასევე software მხარეს, ან ორივე ერთად მომუშავეს.
 
-A **dynamic web server** consists of a static web server plus extra software, most commonly an *application server* and a *database*. We call it "dynamic" because the application server updates the hosted files before sending content to your browser via the HTTP server.
+1. ფიზიკური(hardware) მხრივ, ვებ სერვერი არის **კომპიუტერი**, რომელიც ინახავს ვებ სერვერის პროგრამულ უზრუნველყოფას და ვებსაიტის კომპონენტ ფაილებს.
 
-For example, to produce the final webpages you see in the browser, the application server might fill an HTML template with content from a database. Sites like MDN or Wikipedia have thousands of webpages. Typically, these kinds of sites are composed of only a few HTML templates and a giant database, rather than thousands of static HTML documents. This setup makes it easier to maintain and deliver the content.
+მაგალითად, HTML დოკუმენტებს, სურათებს, CSS სტილებს და JavaScript ფაილებს. ვებ სერვერი უერთდება ინტერნეტს და იძლევა ფიზიკური მონაცემების გაცვლის საშუალებას ინტერნეტთან დაკავშირებულ სხვა მოწყობილობებთან.
 
+2. პროგრამული უზრუნველყოფის(software) მხრივ, ვებ სერვერი მოიცავს რამდენიმე ნაწილს, რომლებიც **აკონტროლებენ როგორ წვდებიან ვებ მომხმარებლები დაჰოსტილ ფაილებს**.
 
-### Deeper dive
+როგორც მინიმუმ, ეს არის *HTTP სერვერი*. HTTP სერვერი არის პროგრამული უზრუნველყოფა, რომელსაც ესმის [URLs](https://developer.mozilla.org/en-US/docs/Glossary/URL) (ვებ მისამართები) და [HTTP](https://developer.mozilla.org/en-US/docs/Glossary/HTTP) (პროტოკოლი, რომელსაც თქვენი ბრაუზერი იყენებს ვებგვერდების სანახავად).
 
-To review: to fetch a webpage, your browser sends a request to the web server, which searches for the requested file in its own storage space. Upon finding the file, the server reads it, processes it as-needed, and sends it to the browser. Let's look at those steps in more detail.
+HTTP სერვერზე წვდომა შესაძლებელია მის მიერ შენახული ვებსაიტების დომენური სახელებით და ის ამ ჰოსტირებული ვებსაიტების შემცველობას/კონტენტს აწვდის მომთხოვნი მომხმარებლის მოწყობილობას.
 
+ყველაზე მარტივ მაგალითზე რომ ვთქვათ, როდესაც ბრაუზერს სჭირდება ფაილი, რომელიც განთავსებულია ვებ სერვერზე, ბრაუზერი ითხოვს ფაილს HTTP-ის საშუალებით.
 
-### Hosting files
+როდესაც მოთხოვნა მიაღწევს სწორ (hardware) ვებ სერვერს, (software) *HTTP სერვერი* იღებს მოთხოვნას, პოულობს მოთხოვნილ დოკუმენტს და აგზავნის მას ბრაუზერში, ასევე HTTP-ის საშუალებით. (თუ სერვერი ვერ პოულობს მოთხოვნილ დოკუმენტს, ის აბრუნებს [404](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404) კოდის მქონე პასუხს.)
 
-First, a web server has to store the website's files, namely all HTML documents and their related assets (including images, CSS stylesheets, JavaScript files, fonts, and video).
+![web-server-to-browser](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server/web-server.svg)
 
-Technically, you could host all those files on your own computer, but it's far more convenient to store files all on a dedicated web server because:
+ვებსაიტის გამოსაქვეყნებლად(publish/deploy) გჭირდებათ სტატიკური ან დინამიური ვებ სერვერი.
 
-* A dedicated web server is typically more available. (up and running)
-* Excusing downtime and systems troubles, a dedicated web server is always connected to the Internet.
-* A dedicated web server can have the same IP address all the time. This is known as a *dedicated IP address*. (not all [ISPs](https://developer.mozilla.org/en-US/docs/Glossary/ISP) provide a fixed IP address for home lines)
-* A dedicated web server is typically maintained by a third-party.
+**სტატიკური ვებ სერვერი**, შედგება კომპიუტერისა (hardware) და HTTP სერვერის (software) ერთობლიობისგან. ჩვენ მას "სტატიკურს" ვუწოდებთ, რადგან სერვერი აგზავნის თავის დაჰოსტილ ფაილებს ჩვენს ბრაუზერში უცვლელად.
 
-For all these reasons, finding a good hosting provider is a key part of building your website.
+**დინამიური ვებ სერვერი** შედგება სტატიკური ვებ სერვერისგან და დამატებითი პროგრამული უზრუნველყოფისგან(software), როგორც წესი *აპლიკაციის სერვერისა* და *მონაცემთა ბაზისგან*. ჩვენ მას "დინამიურს" ვუწოდებთ, რადგან აპლიკაციის სერვერი განაახლებს დაჰოსტილ ფაილებს HTTP სერვერის მეშვეობით თქვენს ბრაუზერში კონტენტის/შიგთავსის გამოგზავნამდე.
 
-Once you have web hosting service, you must upload your files to your web server.
+მაგალითად, ბრაუზერში საჩვენებელი საბოლოო ვებგვერდების შექმნამდე, აპლიკაციის სერვერმა შეიძლება შეავსოს/შეცვალოს HTML შაბლონი მონაცემთა ბაზის ინფორმაციით.
 
+საიტებს, როგორებიცაა MDN ან Wikipedia აქვთ ათასობით ვებგვერდი. როგორც წესი, ამ ტიპის საიტები შედგება მხოლოდ რამდენიმე HTML შაბლონისგან და გიგანტური მონაცემთა ბაზისგან, და არა ათასობით სტატიკური HTML დოკუმენტისგან. ეს კონფიგურაცია აადვილებს კონტენტზე მუშაობას და მომხმარებლამდე მიტანას.
 
-### Communicating through HTTP
-
-Second, a web server provides support for [HTTP](https://developer.mozilla.org/en-US/docs/Glossary/HTTP) (**H**yper**t**ext **T**ransfer **P**rotocol). As its name implies, HTTP specifies how to transfer hypertext (linked web documents) between two computers.
-
-A [Protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) is a set of rules for communication between two computers. HTTP is a textual, stateless protocol.
-
-#### Textual
-
-All commands are plain-text and human-readable.
-
-#### Stateless
-
-Neither the server nor the client remember previous communications. For example, relying on HTTP alone, a server **can't remember** a password you typed or remember your progress on an incomplete transaction. You need an application server for tasks like that. (We'll cover that sort of technology in other articles.)
-
-
-HTTP provides clear rules for how a client and server communicate.
-
-* Only *clients* can make HTTP requests, and then only to *servers*. Servers can only *respond* to a *client*'s HTTP request.
-* When requesting a file via HTTP, clients must provide the file's [URL](https://developer.mozilla.org/en-US/docs/Glossary/URL).
-* The web server *must answer* every HTTP request, at least with an error message.
-
-
-On a web server, the HTTP server is responsible for processing and answering incoming requests.
-
-1. Upon receiving a request, an HTTP server first checks if the requested URL matches an existing file.
-2. If so, the web server sends the file content back to the browser. If not, an application server builds the necessary file.
-3. If neither process is possible, the web server returns an error message to the browser, most commonly [`404 Not Found`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404).
-
-
-### Static vs dynamic content
-
-Roughly speaking, a server can serve either static or dynamic content. Remember that the term *static* means "served as-is". Static websites are the easiest to set up.
-
-The term *dynamic* means that the server processes the content or even generates it on the fly from a database. This approach provides more flexibility, but the technical stack is more complex, making it dramatically more challenging to build a website.
-
-There are so many application server technologies that it's difficult to suggest a particular one. Some application servers cater to specific website categories like blogs, wikis, or eCommerce; others are more generic.
-
-If you're building a dynamic website, take the time to choose technology that fits your needs. Unless you want to learn web server programming, you don't need to create your own application server. That's just reinventing the wheel.
+#### **ძალიან რეკომენდებულია კითხვა განაგრძოთ**: [Web Server - Deeper dive](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server#deeper_dive)
 
 
 ## Introducing Node

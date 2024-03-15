@@ -66,9 +66,29 @@
 
     > სადაც: **Daniel** = `name`; **Tesla Model S released in 2015** და **BMW M2 released in 2019**, რომლებიც `,` ით არიან გამოყოფილი კი = `getCarInfo()`;
 
-## Homework-1 Test
+## Homework-1 Test (Automatic/Jest)
 
-use this code to test your homework.
+თქვენი შესრულებული დავალების ავტომატური ტესტირებისთვის მიყევით ინსტრუქციას:
+
+1. შედით თქვენი დავალების ფოლდერში
+2. (თუ `jest` გიყენიათ გამოტოვეთ ეს ნაბიჯი) დააყენეთ თქვენს სისტემაში `jest` პაკეტი შემდეგი ბრძანების გაშვებით ტერმინალში:
+   ```console
+   npm install jest --global
+   # ან
+   yarn global add jest
+   ```
+3. ჩამოტვირთეთ ან გადააკოპირეთ ფაილის [jest.config.js](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-2/homework/jest.config.js) შიგთავსი იმავე ფოლდერში.
+4. ჩამოტვირთეთ ან გადააკოპირეთ ფაილის [1-homework-solution.test.js](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-2/homework/1-homework-solution.test.js) შიგთავსი იმავე ფოლდერში.
+5. დარწმუნდით რომ ტერმინალი იმყოფება დავალების ფოლდერში და გაუშვით ბრძანება
+   ```console
+   jest
+   ```
+   (თუ ვერ აღიქვა ბრძანება, სცადეთ ტერმინალის გათიშვა და თავიდან ჩართვა)
+6. თუ რომელიმე ტესტი ჩავარდა, მიუბრუნდით დავალების ფაილს, გაასწორეთ და კვლავ გაიმეორეთ ნაბიჯი 5, თუ ყველა ტესტი წარმატებით შესრულდა ნიშნავს, რომ დავალება შესრულებულია სრულყოფილად.
+
+## Homework-1 Test (Manual)
+
+თქვენი შესრულებული დავალების მანუალურად/ხელით ტესტირებისთვის გამოიყენეთ შემდეგი კოდის ფრაგმენტი:
 
 ```js
 let daniel916 = new Person("Daniel", "Barbakadze", 21, "M", []);
@@ -108,7 +128,7 @@ console.log({
 });
 ```
 
-Result must be:
+შედეგი აუცილებლად უნდა იყოს:
 
 ```js
 {
@@ -131,7 +151,7 @@ Result must be:
   stodevianosto: {
     getCarInfo: "Mercedes E190 released in 1991",
     getFullInfo: "Mercedes E190 from 1991. 2 person owns this car. These are - Daniel Barbakadze, Elon Musk.",
-    getOwnerNames: (2)[("Daniel Barbakadze", "Elon Musk")],
+    getOwnerNames: ["Daniel Barbakadze", "Elon Musk"],
     getOwnersCount: 2,
   },
 }

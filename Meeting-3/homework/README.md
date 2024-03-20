@@ -8,9 +8,29 @@
 2. დაამატეთ კლასი სახელად `Vehicle`, რომელსაც დაა**extend**ებს `Car` კლასი.
 3. `Vehicle` კლასის კონსტრუქტორმა უნდა მიიღოს ორი არგუმენტი `make` და `model`, შესაბამისად ამ ცვლადების აღწერა უნდა მოხდეს ამ კლასში და აღარ `Car` კლასში, შესაბამისად `Car` კლასი მას მიიღებს მემკვიდრეობით `Vehicle` სგან.
 
-## Homework-1 Test
+## Homework-1 Test (Automatic/Jest)
 
-use this code to test your homework.
+თქვენი შესრულებული დავალების ავტომატური ტესტირებისთვის მიყევით ინსტრუქციას:
+
+1. შედით თქვენი დავალების ფოლდერში
+2. (თუ `jest` გიყენიათ გამოტოვეთ ეს ნაბიჯი) დააყენეთ თქვენს სისტემაში `jest` პაკეტი შემდეგი ბრძანების გაშვებით ტერმინალში:
+   ```console
+   npm install jest --global
+   # ან
+   yarn global add jest
+   ```
+3. ჩამოტვირთეთ ან გადააკოპირეთ ფაილის [jest.config.js](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-3/homework/jest.config.js) შიგთავსი იმავე ფოლდერში.
+4. ჩამოტვირთეთ ან გადააკოპირეთ ფაილის [3-1-homework-solution.test.js](https://github.com/DanielBarbakadze/Advanced-JS-and-React-Basics/blob/master/Meeting-3/homework/3-1-homework-solution.test.js) შიგთავსი იმავე ფოლდერში.
+5. დარწმუნდით რომ ტერმინალი იმყოფება დავალების ფოლდერში და გაუშვით ბრძანება
+   ```console
+   jest
+   ```
+   (თუ ვერ აღიქვა ბრძანება, სცადეთ ტერმინალის გათიშვა და თავიდან ჩართვა)
+6. თუ რომელიმე ტესტი ჩავარდა, მიუბრუნდით დავალების ფაილს, გაასწორეთ და კვლავ გაიმეორეთ ნაბიჯი 5, თუ ყველა ტესტი წარმატებით შესრულდა ნიშნავს, რომ დავალება შესრულებულია სრულყოფილად.
+
+## Homework-1 Test (Manual)
+
+თქვენი შესრულებული დავალების მანუალურად/ხელით ტესტირებისთვის გამოიყენეთ შემდეგი კოდის ფრაგმენტი:
 
 ```js
 let daniel916 = new Person("Daniel", "Barbakadze", 21, "M", []);

@@ -77,27 +77,4 @@ daniel916.sellsCar(duti_picoti); // removes passed car
 ilona.buysCar(stodevianosto); // adds passed car
 ilona.buysCar(duti_picoti); // adds passed car
 
-console.log({
-  daniel: {
-    fullName: daniel916.fullName(),
-    countCars: daniel916.countCars(),
-    getAllCarsInfo: daniel916.getAllCarsInfo(),
-  },
-  elon: {
-    fullName: ilona.fullName(),
-    countCars: ilona.countCars(),
-    getAllCarsInfo: ilona.getAllCarsInfo(),
-  },
-  duti_picoti: {
-    getOwnersCount: duti_picoti.getOwnersCount(),
-    getOwnerNames: duti_picoti.getOwnerNames(),
-    getFullInfo: duti_picoti.getFullInfo(),
-    getCarInfo: duti_picoti.getCarInfo(),
-  },
-  stodevianosto: {
-    getOwnersCount: stodevianosto.getOwnersCount(),
-    getOwnerNames: stodevianosto.getOwnerNames(),
-    getFullInfo: stodevianosto.getFullInfo(),
-    getCarInfo: stodevianosto.getCarInfo(),
-  },
-});
+module.exports = { createPerson, createCar };
